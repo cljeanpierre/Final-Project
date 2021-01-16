@@ -7,6 +7,7 @@ function Background(props) {
       margin: "0rem auto",
       display: props.display,
       alignItems: props.alignItems,
+      backgroundColor: props.bgColor
     }
   }
   return (

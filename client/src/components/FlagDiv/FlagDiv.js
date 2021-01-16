@@ -5,12 +5,14 @@ const styles = {
   base:{
     width: "max-content",
     margin: props.margin,
-    display:"flex" 
+    display:"flex",
+    alignItems: "center",
+    backgroundColor:"white"
   }
 }
 
   return (
-    <div className={props.layout} style={styles.base}>
+    <div style={styles.base}>
       {props.children}
     </div>
   );

@@ -14,7 +14,7 @@ import Background from "./components/Background/Div";
 import Flags from './components/Img/Img';
 import './App.css';
 import './Bootstrap.css';
-import BackgroundImg from "./components/Background/bgImg"
+
 
 
 class App extends Component {
@@ -36,25 +36,36 @@ class App extends Component {
       'United Arab Emirates': 'AE',
       'United Kingdom': 'GB',
       'United States': 'US',
-  }
+  },
+    flags2:{
+      "CZ": "Czechia",
+      "CI": "Côte d'Ivoire",
+      "DK": "Denmark",
+      "DJ": "Djibouti",
+      "DM": "Dominica",
+      "DO": "Dominican Republic (the)",
+      "EC": "Ecuador",
+      "EG": "Egypt",
+      "SV": "El Salvador",
+      "GQ": "Equatorial Guinea",
+      "ER": "Eritrea",
+    }
   };
 
  
-
-
 
   
   render(){
     return (
       <div>
         
-        <Background>
+        <Background bgColor="cream">
           <FlagDiv margin='0rem auto 2rem'>   
             {Object.values(this.state.flags).map( flag => (
               <Flags margin='1rem' flag={flag}/>
             ))}
           </FlagDiv>
-          <BackgroundImg>
+       
           <TitleDiv>
             <Title name={this.state.title}/>
           </TitleDiv>
@@ -75,23 +86,25 @@ class App extends Component {
                 <HighScoreBtn/>      
             </Div>
           </Div>
-          </BackgroundImg>
+      
 
           <FlagDiv margin="3rem auto">   
-            {Object.values(this.state.flags).map( flag => (
+            {Object.keys(this.state.flags2).map( flag => (
               <Flags margin='1rem' flag={flag}/>
             )) } 
-           
           </FlagDiv>
 
           <FooterDiv>
             <Footer/>
           </FooterDiv>
         </Background>
+        
        
       </div>
+      
     );
   }
 }
+
 
 export default App;
