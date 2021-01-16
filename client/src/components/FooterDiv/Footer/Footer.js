@@ -3,13 +3,15 @@ import React from "react";
 const Footer = () =>{
     const style ={
         base:{
-            margin: "1rem auto",
-            width: "max-content"
+            margin: "0rem auto",
+            width: "max-content",
+            color: "white",
+            fontSize: ".8rem"
         }
     }
     return(
         <div style={style.base}>
-            <p>Copyright</p>
+            <p>@ Copyright</p>
         </div>
     )
 }

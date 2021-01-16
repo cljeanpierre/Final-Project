@@ -6,19 +6,19 @@ const styles = {
   imgBase:{
     width: "max-content",
     margin: "5rem auto",
-    display:"flex" 
+    display:"flex",
+    border: ".1rem solid",
+    borderRadius: "5px"
   },
   divBase:{
-    border: ".1rem dotted grey",
     boxShadow: ".5rem .5rem .5rem darkgrey",
-    padding: "1rem",
     margin: props.margin
-  }
+  },
 }
 
   return (
     <div style={styles.divBase}>
-        <img alt="img" src="flag-nl"></img>
+        <img class="hover" alt="img" src={props.flag}></img>
     </div>
   );
 }

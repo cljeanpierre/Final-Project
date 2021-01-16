@@ -4,15 +4,16 @@ export default function SignUpBtn(props) {
   const style ={
     base:{
       backgroundColor: "#d6efc7",
-      boxShadow: ".6rem .6rem .6rem darkgrey",
-      borderRadius: ".2em",
+      borderRadius: "7px",
       margin: "0 1rem 0",
-      fontFamily: "Georgia, 'Times New Roman', Times, serif"
+      fontFamily: "Georgia, 'Times New Roman', Times, serif",
+      fontSize:"1.2rem",
+      cursor:"pointer"
     }
   }
     return (
       <div>
-          <button style={style.base}>Sign Up</button>
+          <button style={style.base}>{props.children}</button>
       </div>
     );
   }

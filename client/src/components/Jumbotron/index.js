@@ -8,7 +8,9 @@ function Jumbotron(props) {
             color: 'white',
             textAlign: 'center',
             marginTop: '10px',
-            borderRadius: '15px'
+            borderRadius: '15px',
+            width: props.width,
+            margin: props.margin
         
         }
     }

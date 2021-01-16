@@ -7,7 +7,7 @@ const styles = {
     margin: props.margin,
     display:"flex",
     alignItems: "center",
-    backgroundColor:"white"
+    backgroundColor:props.color,
   }
 }
 

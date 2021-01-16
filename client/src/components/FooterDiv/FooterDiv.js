@@ -4,8 +4,6 @@ const FooterDiv = (props) =>{
     const style ={
         base:{
             fontFamily: "Georgia, 'Times New Roman', Times, serif",
-            padding:"2rem  auto",
-            margin: "2rem 0 auto"
         }
     }
     return(

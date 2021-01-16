@@ -1,9 +1,10 @@
 import React from "react";
 
+
 function Background(props) {
   const style ={
     base:{
-      width: "100%",
+      width: "max-content",
       margin: "0rem auto",
       display: props.display,
       alignItems: props.alignItems,
