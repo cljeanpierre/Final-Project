@@ -4,16 +4,17 @@ import "./App.css";
 import Home from "./pages/Home";
 import Scores from "./pages/Scores";
 import Wrapper from "./components/Wrapper";
+import Login from "./pages/Login";
 import Questions from "./pages/Questions";
-
 
 function App() {
   return (
     <Router>
     <div>
-      <Wrapper>
+      <Wrapper style={{padding:"0rem"}}>
       <Route exact path="/" component={Home} />
       <Route exact path="/home" component={Home} />
+      <Route exact path="/login" component={Login} />
       <Route exact path="/questions" component={Questions} />
       <Route exact path="/scores" component={Scores} />
       </Wrapper>
@@ -21,6 +22,4 @@ function App() {
     </Router>
   );
 }
-
-
 export default App;
