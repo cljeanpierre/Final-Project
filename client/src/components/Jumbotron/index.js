@@ -10,7 +10,9 @@ function Jumbotron(props) {
             marginTop: '10px',
             borderRadius: '15px',
             width: props.width,
-            margin: props.margin
+            margin: props.margin,
+            border: ".1rem solid transparent",
+            boxShadow: ".4rem .4rem .4rem darkgrey",
         
         }
     }

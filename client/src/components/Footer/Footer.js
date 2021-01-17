@@ -5,13 +5,14 @@ const Footer = () =>{
         base:{
             margin: "0rem auto",
             width: "max-content",
-            color: "white",
-            fontSize: ".8rem"
+            color: "black",
+            fontSize: ".8rem",
+            height:"max-content"
         }
     }
     return(
         <div style={style.base}>
-            <p>@ Copyright</p>
+            <p>Team ABDT @ Copyright</p>
         </div>
     )
 }

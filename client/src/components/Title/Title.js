@@ -5,7 +5,7 @@ function Title(props) {
     base:{
       width: "max-content",
       margin: "auto auto 2rem",
-      textShadow: ".6rem .6rem .6rem white",
+      textShadow: ".4rem .4rem .4rem goldenrod",
       textAlign: "center",
       fontFamily: "Georgia, 'Times New Roman', Times, serif",
       color: props.color

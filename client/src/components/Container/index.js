@@ -6,10 +6,12 @@ function Container(props) {
         base: {
             backgroundColor: '#eeeeee',
             textAlign: 'center',
-            padding: '25px',
             marginTop: '30px',
             height: 'auto',
-            borderRadius: '15px'
+            borderRadius: '15px',
+            margin: props.margin,
+            width:props.width,
+            padding:props.padding
         
         }
     }

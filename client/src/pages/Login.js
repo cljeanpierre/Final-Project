@@ -1,13 +1,11 @@
 import React from "react";
 import InputBox from "../components/InputBox/inputBox";
 import FlagDiv from "../components/FlagDiv/FlagDiv";
-import LoginBtn from "../components/Button/LoginBtn";
+import LoginBtn from "../components/Button/SignUp_LoginBtns";
 import Div from "../components/Div/Div";
-import Footer from "../components/FooterDiv/Footer/Footer";
-import FooterDiv from "../components/FooterDiv/FooterDiv";
-import TitleDiv from "../components/Title/TitleDiv";
+import Footer from "../components/Footer/Footer";
 import Title from "../components/Title/Title";
-import Background from "../components/Background/Div";
+import Container from "../components/Container/index";
 import FlagImg from "../components/Img/FlagImg";
 import Jumbotron from "../components/Jumbotron/index";
 
@@ -45,46 +43,44 @@ function Login() {
   };
 
   return (
-    <div>
-      <Background bgColor="cream">
-        <FlagDiv margin="0rem auto 2rem">
-          {Object.values(data.flags).map(flag => (
-            <FlagImg margin="1rem" flag={flag} />
-          ))}
-        </FlagDiv>
+    <Container width="max-content" margin="0rem auto" padding="0rem 0rem .2rem">
 
-        <TitleDiv>
-          <Title name={data.title} />
-        </TitleDiv>
-        
-          <Div margin="2rem auto" alignItems="center">
-          <Jumbotron margin="0rem auto" width="max-content">
-        
-              <InputBox padding= "2rem 2rem 0rem" usernamePlaceholder={data.placeholder.username} />
-              <InputBox padding= "0rem 2rem 2rem" usernamePlaceholder={data.placeholder.password} />
-            
-            </Jumbotron>
+      <FlagDiv margin="0rem auto 2rem">
+        {" "}
+        {Object.values(data.flags).map(flag => (
+          <FlagImg margin="1rem" flag={flag} />
+        ))}{" "}
+      </FlagDiv>
 
-            <Div display="flex">
-              <LoginBtn>Login</LoginBtn>
-              <LoginBtn>Sign Up </LoginBtn>
-              <LoginBtn>Highscores</LoginBtn>
-            </Div>
-            
-          </Div>
-       
+        <Title name={data.title} />{" "}
 
-        <FlagDiv margin="3rem auto 0rem">
-          {Object.keys(data.flags2).map(flag => (
-            <FlagImg margin="1rem" flag={flag} />
-          ))}
-        </FlagDiv>
+      <Div margin="2rem auto" alignItems="center">
+        <Jumbotron margin="0rem auto" width="max-content">
+          <InputBox
+            padding=".5rem 2rem 0rem"
+            usernamePlaceholder={data.placeholder.username}
+          />{" "}
+          <InputBox
+            padding="0rem 2rem .5rem"
+            usernamePlaceholder={data.placeholder.password}
+          />
+        </Jumbotron>
 
-        <FooterDiv>
-          <Footer />
-        </FooterDiv>
-      </Background>
-    </div>
+        <Div display="flex">
+          <LoginBtn> Login </LoginBtn> <LoginBtn> Sign Up </LoginBtn>{" "}
+          <LoginBtn> Highscores </LoginBtn>{" "}
+        </Div>
+      </Div>
+
+      <FlagDiv margin="3rem auto 0rem">
+        {" "}
+        {Object.keys(data.flags2).map(flag => (
+          <FlagImg margin="1rem" flag={flag} />
+        ))}{" "}
+      </FlagDiv>
+
+      <Footer />
+    </Container>
   );
 }
 

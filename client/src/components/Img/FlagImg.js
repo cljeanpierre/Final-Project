@@ -8,7 +8,7 @@ const FlagImg= (props)=> {
     divBase:{
       margin: props.margin,
       width: "5.5rem",
-      height: "5rem",
+      height: "max-content",
     },
     imgBase:{
       width: "5.5rem",
