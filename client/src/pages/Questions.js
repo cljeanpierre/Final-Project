@@ -96,22 +96,22 @@ function Questions() {
                 </Row>
                 <Row>
                     <div className="card-body" onClick={()=>createQuestion(state.choice1)}>
-                        <Button>{state.choice2}</Button>
+                        <Button onClick={()=>createQuestion(state.choice1)}>{state.choice2}</Button>
                     </div>
                 </Row>
                 <Row>
                     <div className="card-body" onClick={()=>createQuestion(state.choice1)}>
-                        <Button>{state.choice3}</Button>
+                        <Button onClick={()=>createQuestion(state.choice1)}>{state.choice3}</Button>
                     </div>
                 </Row>
                 <Row>
                     <div className="card-body" onClick={()=>createQuestion(state.choice1)}>
-                        <Button>{state.choice4}</Button>
+                        <Button onClick={()=>createQuestion(state.choice1)}>{state.choice4}</Button>
                     </div>
                 </Row>
                 <Row>
                     <div className="card-body" onClick={()=>createQuestion(state.choice1)} >
-                        <Button>{state.choice5}</Button>
+                        <Button onClick={()=>createQuestion(state.choice1)}>{state.choice5}</Button>
                     </div>
                 </Row>
             </Col>
