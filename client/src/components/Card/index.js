@@ -6,9 +6,9 @@ function Card(props) {
         base: {
             backgroundColor: 'white',
             textAlign: 'center',
-            padding: '15px',
+            padding: '15px 15px 15px 15px',
             height: 'auto',
-            borderRadius: '15px'
+            borderRadius: '15px 15px 15px 15px'
         }
     }
     return (

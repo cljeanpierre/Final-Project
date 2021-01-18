@@ -5,7 +5,7 @@ import Radium from "radium"
 const InputBox = (props) => {
     const style ={
         base:{ width: "max-content",
-            margin: "1.5rem auto",
+            margin: "1.5rem auto 1.5rem auto",
             padding: props.padding
         },
     }

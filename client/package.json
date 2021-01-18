@@ -5,6 +5,7 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "axios": "^0.21.1",
     "radium": "^0.26.1",
     "react": "^16.13.1",
     "react-country-flag": "^2.3.0",
