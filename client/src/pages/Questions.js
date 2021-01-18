@@ -53,7 +53,7 @@ function Questions() {
         if (userAnswer === state.correctChoice) {
             newScore = state.userScore + 10;
         } else {
-            if (state.questionCount!=0) {
+            if (state.questionCount!==0) {
                 newScore = state.userScore - 1;
             }
         }
