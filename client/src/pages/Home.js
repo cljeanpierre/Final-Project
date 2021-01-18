@@ -26,7 +26,9 @@ function Home(props) {
                         <div className="card-body">
                             <h1 className="lead">High Scores</h1>
                             <br></br>
+                            <Link to={`/scores`} role="button" className="btn btn-link">
                             <Button>View</Button>
+                            </Link>
                         </div>
                     </Row>
                 </Card>
