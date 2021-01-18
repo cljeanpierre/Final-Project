@@ -10,7 +10,8 @@ const QuestionContext = createContext({
   correctChoice: "",
   loading: true,
   citiesArray: [],
-  score: 0
+  userScore: 0,
+  questionCount: 0 
 });
 
 const { Provider } = QuestionContext;
@@ -41,6 +42,8 @@ function reducer(state, action) {
         choice4: action.countryChoices[3],
         choice5: action.countryChoices[4],
         loading: false,
+        flag: action.flag,
+        questionCount: action.questionCount++
       };
 
     case "loading":
@@ -64,7 +67,8 @@ function QuestionProvider({ value = [], ...props }) {
     loading: true,
     citiesArray: [],
     correctChoice: "",
-    score: 0
+    userScore: 0,
+    questionCount: 0 
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

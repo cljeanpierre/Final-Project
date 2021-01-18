@@ -6,7 +6,7 @@ import React from "react";
 function List(props) {
     const styles = {
         base: {
-            borderRadius: '15px',
+            borderRadius: '15px 15px 15px 15px',
             background: 'yellow',
             fontSize: '2rem',
         }

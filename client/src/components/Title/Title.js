@@ -4,7 +4,7 @@ function Title(props) {
   const style ={
     base:{
       width: "max-content",
-      margin: "auto auto 2rem",
+      margin: "auto auto 2rem auto",
       textShadow: ".6rem .6rem .6rem white",
       textAlign: "center",
       fontFamily: "Georgia, 'Times New Roman', Times, serif",
