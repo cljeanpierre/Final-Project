@@ -9,8 +9,12 @@ import Button from "../components/Button";
 import Col from "../components/Col";
 
 function Questions() {
+
+    //Hook into global context
     const [state, dispatch] = useQuestionContext();
 
+    
+    //Make API call to get array of countries with all of their information
     useEffect(() => {
         axios.get("https://restcountries.eu/rest/v2/all")
             .then(res => {
@@ -19,10 +23,12 @@ function Questions() {
             .catch(err => console.log(err));
     }, []);
 
+    //Refresh the page when the state changes
     useEffect(()=> {
         console.log(state);
     }, [state]);
 
+    //Create a random order for multiple choice country names
     const randomizeOrder = (answers) => {
         for (let i=answers.length-1; i>0; i--) {
             let j=Math.floor(Math.random()*(i+1));
@@ -33,6 +39,7 @@ function Questions() {
         return answers;
     }
 
+    //Create a question using the questions array from the global state
     const createQuestion = (userAnswer) => {
         // if (userAnswer===state.correctChoice) {
         //     alert("correct answer");
@@ -65,7 +72,7 @@ function Questions() {
             
 
             dispatch({ type: "setQuestion", correctChoice: correctChoice, countryChoices: randomizeOrder(countryChoices), flag: flagImg, questionCount: state.questionCount });
-            console.log(state);
+
         }
     };
 
