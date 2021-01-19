@@ -8,6 +8,7 @@ const QuestionContext = createContext({
   choice4: "",
   choice5: "",
   correctChoice: "",
+  lastAnswer: "",
   loading: true,
   citiesArray: [],
   userScore: 0,
@@ -43,6 +44,7 @@ function reducer(state, action) {
         choice5: action.countryChoices[4],
         loading: false,
         flag: action.flag,
+        userScore: action.userScore,
         questionCount: action.questionCount++
       };
 
@@ -67,6 +69,7 @@ function QuestionProvider({ value = [], ...props }) {
     loading: true,
     citiesArray: [],
     correctChoice: "",
+    lastAnswer: "",
     userScore: 0,
     questionCount: 0 
   });

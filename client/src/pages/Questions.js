@@ -8,14 +8,17 @@ import Row from "../components/Row";
 import Button from "../components/Button";
 import Col from "../components/Col";
 
+let firstRun;
+
 function Questions() {
 
     //Hook into global context
     const [state, dispatch] = useQuestionContext();
 
-    
+
     //Make API call to get array of countries with all of their information
     useEffect(() => {
+        firstRun = true;
         axios.get("https://restcountries.eu/rest/v2/all")
             .then(res => {
                 dispatch({ type: "loadCities", citiesArray: res.data });
@@ -24,26 +27,36 @@ function Questions() {
     }, []);
 
     //Refresh the page when the state changes
-    useEffect(()=> {
+    useEffect(() => {
         console.log(state);
+        if (firstRun && !state.loading) {
+            createQuestion();
+            firstRun = false;
+        }
     }, [state]);
 
     //Create a random order for multiple choice country names
     const randomizeOrder = (answers) => {
-        for (let i=answers.length-1; i>0; i--) {
-            let j=Math.floor(Math.random()*(i+1));
+        for (let i = answers.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
             let temp = answers[i];
-            answers[i]=answers[j];
-            answers[j]=temp; 
+            answers[i] = answers[j];
+            answers[j] = temp;
         }
         return answers;
     }
 
     //Create a question using the questions array from the global state
     const createQuestion = (userAnswer) => {
-        // if (userAnswer===state.correctChoice) {
-        //     alert("correct answer");
-        // }
+        let newScore = state.userScore;
+
+        if (userAnswer === state.correctChoice) {
+            newScore = state.userScore + 10;
+        } else {
+            if (state.questionCount!==0) {
+                newScore = state.userScore - 1;
+            }
+        }
 
         if (!state.loading) {
             const numOfCountries = state.citiesArray.length;
@@ -63,15 +76,13 @@ function Questions() {
                     incorrectChoiceCount++;
                 }
             }
-            state.loading=true;
+            state.loading = true;
             countryChoices.push(correctChoice);
             console.log(flagImg);
             // console.log(correctChoice);
             // console.log(countryChoices);
             // console.log(randomizeOrder(countryChoices));
-            
-
-            dispatch({ type: "setQuestion", correctChoice: correctChoice, countryChoices: randomizeOrder(countryChoices), flag: flagImg, questionCount: state.questionCount });
+            dispatch({ type: "setQuestion", correctChoice: correctChoice, countryChoices: randomizeOrder(countryChoices), flag: flagImg, questionCount: state.questionCount, userScore: newScore });
 
         }
     };
@@ -85,40 +96,37 @@ function Questions() {
                 <div className="card-body">
                     <h3>Question {state.questionCount}</h3>
                 </div>
-                <div className="card-body">
-                    <h3>Timer</h3>
-                </div>
             </Row>
             <Jumbotron>
                 <h1 className="styling">Which country does this flag belong to?</h1>
             </Jumbotron>
             <Col>
                 <Row>
-                    <img height="100px" src={state.flag}/>
+                    <img height="100px" src={state.flag} />
                 </Row>
                 <Row>
                     <div className="card-body">
-                        <Button onClick={()=>createQuestion(state.choice1)}>{state.choice1}</Button>
+                        <Button onClick={() => createQuestion(state.choice1)}>{state.choice1}</Button>
                     </div>
                 </Row>
                 <Row>
-                    <div className="card-body" onClick={()=>createQuestion(state.choice1)}>
-                        <Button onClick={()=>createQuestion(state.choice1)}>{state.choice2}</Button>
+                    <div className="card-body">
+                        <Button onClick={() => createQuestion(state.choice2)}>{state.choice2}</Button>
                     </div>
                 </Row>
                 <Row>
-                    <div className="card-body" onClick={()=>createQuestion(state.choice1)}>
-                        <Button onClick={()=>createQuestion(state.choice1)}>{state.choice3}</Button>
+                    <div className="card-body">
+                        <Button onClick={() => createQuestion(state.choice3)}>{state.choice3}</Button>
                     </div>
                 </Row>
                 <Row>
-                    <div className="card-body" onClick={()=>createQuestion(state.choice1)}>
-                        <Button onClick={()=>createQuestion(state.choice1)}>{state.choice4}</Button>
+                    <div className="card-body">
+                        <Button onClick={() => createQuestion(state.choice4)}>{state.choice4}</Button>
                     </div>
                 </Row>
                 <Row>
-                    <div className="card-body" onClick={()=>createQuestion(state.choice1)} >
-                        <Button onClick={()=>createQuestion(state.choice1)}>{state.choice5}</Button>
+                    <div className="card-body">
+                        <Button onClick={() => createQuestion(state.choice5)}>{state.choice5}</Button>
                     </div>
                 </Row>
             </Col>
