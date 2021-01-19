@@ -7,7 +7,10 @@ function Button(props) {
             padding: '15px 15px 15px 15px',
             borderRadius: '10px 10px 10px 10px',
             background: 'lightyellow',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            ':hover': {
+                cursor: 'pointer'
+            }
         
         }
     }

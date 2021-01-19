@@ -45,7 +45,7 @@ function reducer(state, action) {
         loading: false,
         flag: action.flag,
         userScore: action.userScore,
-        questionCount: action.questionCount++
+        questionCount: action.questionCount+1
       };
 
     case "loading":
