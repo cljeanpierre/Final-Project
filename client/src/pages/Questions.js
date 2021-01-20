@@ -29,10 +29,24 @@ function Questions() {
     //Refresh the page when the state changes
     useEffect(() => {
         console.log(state);
+        let timeLeft = state.timeLeft;
         if (firstRun && !state.loading) {
+
             createQuestion();
             firstRun = false;
         }
+
+        const quizTimeout = setTimeout(() => {
+            timeLeft = state.timeLeft - 1;
+            if (timeLeft < 0) {
+                dispatch({type: "gameOver"})
+
+            } else {
+                dispatch({ type: "updateTime", timeLeft: timeLeft });
+            }
+            
+        }, 1000);
+
     }, [state]);
 
     //Create a random order for multiple choice country names
@@ -53,12 +67,12 @@ function Questions() {
         if (userAnswer === state.correctChoice) {
             newScore = state.userScore + 10;
         } else {
-            if (state.questionCount!==0) {
+            if (state.questionCount !== 0) {
                 newScore = state.userScore - 1;
             }
         }
 
-        if (!state.loading) {
+        if (!state.loading && !state.gameOver) {
             const numOfCountries = state.citiesArray.length;
             const randomChosenCountryIndex = Math.floor(Math.random() * numOfCountries);
             const chosenCountry = state.citiesArray[randomChosenCountryIndex];  //Select a random country
@@ -96,13 +110,16 @@ function Questions() {
                 <div className="card-body">
                     <h3>Question {state.questionCount}</h3>
                 </div>
+                <div className="card-body">
+                    <h3>Timer: {state.timeLeft} secs</h3>
+                </div>
             </Row>
             <Jumbotron>
                 <h1 className="styling">Which country does this flag belong to?</h1>
             </Jumbotron>
             <Col>
                 <Row>
-                    <img height="100px" src={state.flag} />
+                    <img style={{ borderRadius: "0.5rem" }} height="100px" src={state.flag} />
                 </Row>
                 <Row>
                     <div className="card-body">
