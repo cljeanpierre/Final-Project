@@ -13,7 +13,7 @@ const QuestionContext = createContext({
   citiesArray: [],
   userScore: 0,
   questionCount: 0,
-  timeLeft: 100,
+  timeLeft: 300,
   gameOver: false
 });
 
@@ -28,12 +28,6 @@ function reducer(state, action) {
         loading: false,
         citiesArray: action.citiesArray
       };
-    // case "updateQuestion":
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     flag: action.flag,
-    //   };
 
     case "setQuestion":
       return {
@@ -86,7 +80,7 @@ function QuestionProvider({ value = [], ...props }) {
     lastAnswer: "",
     userScore: 0,
     questionCount: 0,
-    timeLeft: 100,
+    timeLeft: 300,
     gameOver: false
   });
 

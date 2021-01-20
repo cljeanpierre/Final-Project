@@ -11,11 +11,23 @@ import Col from "../components/Col";
 let firstRun;
 
 function Questions() {
-
     //Hook into global context
     const [state, dispatch] = useQuestionContext();
 
+    
+    const addZero = (time) => {
+        if (time<10) {
+            return "0"+time;
+        } else {
+            return time;
+        }
+    }
 
+    const formatTime = (time) => {
+        const minutes =Math.floor(time/60);
+        const seconds = time%60;
+        return `${addZero(minutes)}:${addZero(seconds)}`;
+    }
     //Make API call to get array of countries with all of their information
     useEffect(() => {
         firstRun = true;
@@ -28,25 +40,20 @@ function Questions() {
 
     //Refresh the page when the state changes
     useEffect(() => {
-        console.log(state);
         let timeLeft = state.timeLeft;
         if (firstRun && !state.loading) {
-
             createQuestion();
             firstRun = false;
         }
-
         const quizTimeout = setTimeout(() => {
             timeLeft = state.timeLeft - 1;
             if (timeLeft < 0) {
-                dispatch({type: "gameOver"})
+                dispatch({ type: "gameOver" })
 
             } else {
                 dispatch({ type: "updateTime", timeLeft: timeLeft });
             }
-            
         }, 1000);
-
     }, [state]);
 
     //Create a random order for multiple choice country names
@@ -93,9 +100,6 @@ function Questions() {
             state.loading = true;
             countryChoices.push(correctChoice);
             console.log(flagImg);
-            // console.log(correctChoice);
-            // console.log(countryChoices);
-            // console.log(randomizeOrder(countryChoices));
             dispatch({ type: "setQuestion", correctChoice: correctChoice, countryChoices: randomizeOrder(countryChoices), flag: flagImg, questionCount: state.questionCount, userScore: newScore });
 
         }
@@ -111,7 +115,7 @@ function Questions() {
                     <h3>Question {state.questionCount}</h3>
                 </div>
                 <div className="card-body">
-                    <h3>Timer: {state.timeLeft} secs</h3>
+                    <h3>Timer: {formatTime(state.timeLeft)} left</h3>
                 </div>
             </Row>
             <Jumbotron>
