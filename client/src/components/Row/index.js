@@ -4,12 +4,17 @@ import Radium from "radium";
 function Row(props) {
     const styles = {
         base: {
-            padding: '10px',
+            paddingTop: '10px',
+            paddingLeft:'10px',
+            paddingRight:'10px',
+            paddingBottom: '10px',
             background: 'lightgreen',
             textAlign: 'center',
-            margin: '5px',
+            marginTop: '5px',
+            marginLeft:'5px',
+            marginRight:'5px',
+            marginBottom: '20px',
             borderRadius: '15px',
-            marginBottom: '20px'
         }
     }
     return <div className="row" style={styles.base}>{props.children}</div>

@@ -12,9 +12,7 @@ export default function SignUpBtn(props) {
     }
   }
     return (
-      <div>
-          <button style={style.base}>{props.children}</button>
-      </div>
+          <button {...props} style={style.base}>{props.children}</button>
     );
   }
   

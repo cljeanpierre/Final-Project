@@ -8,6 +8,8 @@ import Title from "../components/Title/Title";
 import Container from "../components/Container/index";
 import SignUpFlag from "../components/Img/SignupFlag";
 import Jumbotron from "../components/Jumbotron/index";
+import {Link} from "react-router-dom"
+
 
 function SignUp() {
   const data = {
@@ -71,8 +73,12 @@ function SignUp() {
         </Jumbotron>
 
         <Div margin="0 auto" display="flex">
-          <LoginBtn> Login </LoginBtn> 
-          <LoginBtn> Sign Up </LoginBtn>
+          <Link to={`/`} role="button">
+            <LoginBtn> Login </LoginBtn> 
+          </Link>
+          <Link to={`/home`} role="button">
+            <LoginBtn> Sign Up </LoginBtn>{" "}
+          </Link>
         </Div>
       </Div>
 
@@ -83,7 +89,7 @@ function SignUp() {
         ))}{" "}
       </FlagDiv>
 
-      <Footer padding="0rem 0rem .7rem"/>
+      <Footer/>
     </Container>
   );
 }
