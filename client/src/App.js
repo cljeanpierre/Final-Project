@@ -6,6 +6,7 @@ import Scores from "./pages/Scores";
 import Wrapper from "./components/Wrapper";
 import Login from "./pages/Login";
 import Questions from "./pages/Questions";
+import SignUp from "./pages/Signup"
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route exact path="/login" component={Login} />
       <Route exact path="/questions" component={Questions} />
       <Route exact path="/scores" component={Scores} />
+      <Route exact path="/signup" component={SignUp} />
       </Wrapper>
     </div>
     </Router>
