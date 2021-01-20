@@ -7,9 +7,11 @@ import Wrapper from "./components/Wrapper";
 import Login from "./pages/Login";
 import Questions from "./pages/Questions";
 import SignUp from "./pages/Signup"
+import { QuestionProvider } from "./utils/GlobalState"
 
 function App() {
   return (
+    <QuestionProvider>
     <Router>
     <div>
       <Wrapper>
@@ -21,6 +23,7 @@ function App() {
       </Wrapper>
     </div>
     </Router>
+    </QuestionProvider>
   );
 }
 export default App;
