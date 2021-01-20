@@ -2,7 +2,7 @@ import React from "react";
 import ReactCountryFlag from "react-country-flag"
 
 
-const FlagImg= (props)=> {
+const SignUpFlag= (props)=> {
 
   const styles ={
     divBase:{
@@ -27,24 +27,8 @@ const FlagImg= (props)=> {
     )
 }
  
-export default FlagImg
+export default SignUpFlag
 
 
 
 
-// function Img(props) {
-//   const styles ={
-//     base:{
-//       border: ".1rem dotted grey",
-//       boxShadow: ".5rem .5rem .5rem darkgrey",
-//     }
-//   }
-
-//   return (
-//     <div styles={styles.base}>
-//         <img alt="img" src={props.flag}/>
-//     </div>
-//   );
-// }
-
-// export default Img;
