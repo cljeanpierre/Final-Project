@@ -5,8 +5,8 @@ export default function SignUpBtn(props) {
     base:{
       backgroundColor: "#d6efc7",
       borderRadius: "7px",
-      margin: "0 1rem 0",
-      fontFamily: "Georgia, 'Times New Roman', Times, serif",
+      margin: "1.5rem 1rem 0rem 1rem",
+      fontFamily:"Verdana, Geneva, Tahoma, sans-serif;",
       fontSize:"1.2rem",
       cursor:"pointer"
     }

@@ -8,6 +8,7 @@ const styles = {
     display:"flex",
     alignItems: "center",
     backgroundColor:props.color,
+    height:"max-content"
   }
 }
 

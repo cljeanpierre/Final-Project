@@ -6,17 +6,19 @@ import Div from "../components/Div/Div";
 import Footer from "../components/Footer/Footer";
 import Title from "../components/Title/Title";
 import Container from "../components/Container/index";
-import FlagImg from "../components/Img/FlagImg";
+import SignUpFlag from "../components/Img/SignupFlag";
 import Jumbotron from "../components/Jumbotron/index";
 import {Link} from "react-router-dom"
 
-function Login() {
+
+function SignUp() {
   const data = {
     placeholder: {
-      username: "Enter Username",
-      password: "Enter Password"
+      username: "Enter a Username",
+      password: "Enter a Password",
+      reEnterPassword: "Re-enter Password"
     },
-    title: "Geographic Trivia",
+    title: "Sign Up",
     flags: {
       "Aland Islands": "AX",
       Albania: "AL",
@@ -44,12 +46,12 @@ function Login() {
   };
 
   return (
-    <Container width="max-content" margin="0rem auto" padding="0rem 0rem .2rem">
+    <Container width="max-content" margin="0rem auto" >
 
       <FlagDiv margin="0rem auto 2rem">
         {" "}
         {Object.values(data.flags).map(flag => (
-          <FlagImg margin="1rem" flag={flag} />
+          <SignUpFlag margin="1rem" flag={flag} />
         ))}{" "}
       </FlagDiv>
 
@@ -62,34 +64,34 @@ function Login() {
             usernamePlaceholder={data.placeholder.username}
           />{" "}
           <InputBox
-            padding="0rem 2rem .5rem"
             usernamePlaceholder={data.placeholder.password}
+          />
+          <InputBox
+            padding="0rem 0rem .5rem 0rem"
+            usernamePlaceholder={data.placeholder.reEnterPassword}
           />
         </Jumbotron>
 
-        <Div display="flex">
-          <Link to={`/home`} role="button">
+        <Div margin="0 auto" display="flex">
+          <Link to={`/`} role="button">
             <LoginBtn> Login </LoginBtn> 
           </Link>
-          <Link to={`/signup`} role="button">
+          <Link to={`/home`} role="button">
             <LoginBtn> Sign Up </LoginBtn>{" "}
-          </Link>
-          <Link to={`/scores`} role="button">
-            <LoginBtn> Highscores </LoginBtn>{" "}
           </Link>
         </Div>
       </Div>
 
-      <FlagDiv margin="3rem auto 0rem">
+      <FlagDiv margin="2.3rem auto 0rem">
         {" "}
         {Object.keys(data.flags2).map(flag => (
-          <FlagImg margin="1rem" flag={flag} />
+          <SignUpFlag margin="1rem" flag={flag} />
         ))}{" "}
       </FlagDiv>
 
-      <Footer />
+      <Footer/>
     </Container>
   );
 }
 
-export default Login;
+export default SignUp;
