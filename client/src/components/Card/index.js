@@ -4,7 +4,7 @@ import Radium from "radium";
 function Card(props) {
     const styles = {
         base: {
-            backgroundColor: 'white',
+            backgroundColor: '#cfdac8',
             textAlign: 'center',
             padding: '15px 15px 15px 15px',
             height: 'auto',
@@ -13,7 +13,7 @@ function Card(props) {
     }
     return (
         
-        <div className="Card" style={styles.base}>
+        <div className="card" style={styles.base}>
         {props.children}
         </div>
         
