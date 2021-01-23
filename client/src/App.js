@@ -13,7 +13,6 @@ function App() {
   return (
     <QuestionProvider>
     <Router>
-    <div>
       <Wrapper>
       <Route exact path="/" component={Login} />
       <Route exact path="/home" component={Home} />
@@ -21,7 +20,6 @@ function App() {
       <Route exact path="/scores" component={Scores} />
       <Route exact path="/signup" component={SignUp} />
       </Wrapper>
-    </div>
     </Router>
     </QuestionProvider>
   );

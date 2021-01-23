@@ -4,16 +4,15 @@ function FlagContainer(props) {
 const styles = {
   base:{
     width: "max-content",
-    margin: props.margin,
     display:"flex",
-    alignItems: "center",
     backgroundColor:props.color,
-    height:"max-content"
-  }
+    height:"max-content",
+    
+  },
 }
 
   return (
-    <div style={styles.base}>
+    <div className="container-fluid" style={styles.base}>
       {props.children}
     </div>
   );

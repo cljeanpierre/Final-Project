@@ -1,6 +1,6 @@
 import React from "react";
 import InputBox from "../components/InputBox/inputBox";
-import FlagDiv from "../components/FlagDiv/FlagDiv";
+import FlagContainer from "../components/FlagDiv/FlagContainer";
 import LoginBtn from "../components/Button/SignUp_LoginBtns";
 import Div from "../components/Div/Div";
 import Footer from "../components/Footer/Footer";
@@ -48,12 +48,12 @@ function SignUp() {
   return (
     <Container width="max-content" margin="0rem auto" >
 
-      <FlagDiv margin="0rem auto 2rem">
+      <FlagContainer>
         {" "}
         {Object.values(data.flags).map(flag => (
           <SignUpFlag margin="1rem" flag={flag} />
         ))}{" "}
-      </FlagDiv>
+      </FlagContainer>
 
         <Title name={data.title} />{" "}
 
@@ -82,12 +82,12 @@ function SignUp() {
         </Div>
       </Div>
 
-      <FlagDiv margin="2.3rem auto 0rem">
+      <FlagContainer>
         {" "}
         {Object.keys(data.flags2).map(flag => (
           <SignUpFlag margin="1rem" flag={flag} />
         ))}{" "}
-      </FlagDiv>
+      </FlagContainer>
 
       <Footer/>
     </Container>

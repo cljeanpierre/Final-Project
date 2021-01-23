@@ -1,6 +1,6 @@
 import React from "react";
 import InputBox from "../components/InputBox/inputBox";
-import FlagDiv from "../components/FlagDiv/FlagDiv";
+import FlagContainer from "../components/FlagDiv/FlagContainer";
 import LoginBtn from "../components/Button/SignUp_LoginBtns";
 import Div from "../components/Div/Div";
 import Footer from "../components/Footer/Footer";
@@ -44,14 +44,13 @@ function Login() {
   };
 
   return (
-    <Container width="max-content" margin="0rem auto" padding="0rem 0rem .2rem">
-
-      <FlagDiv margin="0rem auto 2rem">
+    <Container  width="max-content" margin="0 auto">
+      <FlagContainer>
         {" "}
         {Object.values(data.flags).map(flag => (
           <FlagImg margin="1rem" flag={flag} />
         ))}{" "}
-      </FlagDiv>
+      </FlagContainer>
 
         <Title name={data.title} />{" "}
 
@@ -80,12 +79,12 @@ function Login() {
         </Div>
       </Div>
 
-      <FlagDiv margin="3rem auto 0rem">
+      <FlagContainer >
         {" "}
         {Object.keys(data.flags2).map(flag => (
           <FlagImg margin="1rem" flag={flag} />
         ))}{" "}
-      </FlagDiv>
+      </FlagContainer>
 
       <Footer />
     </Container>

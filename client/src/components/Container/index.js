@@ -6,14 +6,16 @@ function Container(props) {
         base: {
             backgroundColor: '#eeeeee',
             textAlign: 'center',
-            padding: '15px',
-            margin: '0',
-            height: 'max-content',
-            borderRadius: '15px'
-        
+            padding: '0px',
+            borderRadius: '15px',
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)"
+            
         }
     }
-    return <div className="container" style={styles.base}>{props.children}</div>
+    return <div className="row" style={styles.base}>{props.children}</div>
 }
 
 export default Radium(Container);

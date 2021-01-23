@@ -5,11 +5,7 @@ import Radium from "radium";
 function Wrapper(props) {
     const styles = {
         base: {
-            paddingTop: '0px',
-            paddingLeft:'0px',
-            paddingRight:'0px',
-            paddingBottom: '0px',
-            background: 'grey',
+            background: 'lightgrey',
             textAlign: 'center',
             height: '100vh'
         }

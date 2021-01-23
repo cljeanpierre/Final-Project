@@ -4,7 +4,7 @@ import React from "react";
 function Flags(props) {
 const styles = {
   imgBase:{
-    width: "max-content",
+    width: "auto",
     margin: "5rem auto",
     display:"flex",
     border: ".1rem solid",
