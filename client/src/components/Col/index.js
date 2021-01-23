@@ -4,12 +4,12 @@ import Radium from "radium";
 function Col(props) {
     const styles = {
         base: {
-            padding: '25px 25px 25px 25px',
+            padding: '1.6rem 1.6rem 1.6rem 1.6rem',
             background: 'grey',
             textAlign: 'center',
             fontColor: 'black',
             height: 'auto',
-            borderRadius: '5px 5px 5px 5px'
+            borderRadius: '0.31rem 0.31rem 0.31rem 0.31rem'
         }
     }
     return <div className="col" style={styles.base}>{props.children}</div>;

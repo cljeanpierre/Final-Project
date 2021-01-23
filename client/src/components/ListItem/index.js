@@ -5,7 +5,7 @@ function ListItem({ children }) {
     const styles = {
         base: {
             background: 'yellow',
-            padding: '10px 10px 10px 10px',
+            padding: '0.6rem 0.6rem 0.6rem 0.6rem',
             display: 'list-item',
             listStylePosition: 'inside'
         }

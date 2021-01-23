@@ -6,17 +6,17 @@ function Card(props) {
         base: {
             backgroundColor: 'white',
             textAlign: 'center',
-            padding: '15px 15px 15px 15px',
+            padding: '0.94rem 0.94rem 0.94rem 0.94rem',
             height: 'auto',
-            borderRadius: '15px 15px 15px 15px'
+            borderRadius: '0.94rem 0.94rem 0.94rem 0.94rem'
         }
     }
     return (
-        
+
         <div className="Card" style={styles.base}>
-        {props.children}
+            {props.children}
         </div>
-        
+
     );
 }
 

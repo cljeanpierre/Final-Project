@@ -6,11 +6,11 @@ function Container(props) {
         base: {
             backgroundColor: '#eeeeee',
             textAlign: 'center',
-            padding: '15px',
+            padding: '0.94rem',
             margin: '0',
             height: 'max-content',
-            borderRadius: '15px'
-        
+            borderRadius: '0.94rem'
+
         }
     }
     return <div className="container" style={styles.base}>{props.children}</div>
