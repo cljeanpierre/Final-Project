@@ -1,17 +1,16 @@
 import React from "react";
 import Radium from "radium";
 
-
 function Wrapper(props) {
     const styles = {
         base: {
-            paddingTop: '0px',
-            paddingLeft:'0px',
-            paddingRight:'0px',
-            paddingBottom: '0px',
-            background: 'grey',
+            paddingTop: '0rem',
+            paddingLeft:'0rem',
+            paddingRight:'0rem',
+            paddingBottom: '0rem',
+            background: '#e8eae6',
             textAlign: 'center',
-            height: '100vh'
+            height: 'auto'
         }
     }
     return <div className="wrapper" style={styles.base}>{props.children}</div>

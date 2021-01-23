@@ -13,9 +13,8 @@ import Logo from "../quiz-logo.png";
 
 function Scores() {
     return (
-        <div>
+        <div className="container-fluid main-bg">
             <Container>
-                {/* <Card> */}
                     <Jumbotron>
                         <img className="img-fluid" src={Logo} alt="logo"></img>
                         <h1>High Scores</h1>
@@ -33,7 +32,6 @@ function Scores() {
                             Username & Score Placeholder
                     </ListItem>
                     </List>
-                {/* </Card> */}
             </Container>
         </div>
     );
