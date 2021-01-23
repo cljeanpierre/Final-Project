@@ -6,9 +6,9 @@ function Container(props) {
         base: {
             backgroundColor: '#eeeeee',
             textAlign: 'center',
-            padding: '25px',
-            marginTop: '30px',
-            height: 'auto',
+            padding: '15px',
+            margin: '0',
+            height: 'max-content',
             borderRadius: '15px'
         
         }

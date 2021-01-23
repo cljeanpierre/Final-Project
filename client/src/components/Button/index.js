@@ -4,14 +4,17 @@ import Radium from "radium";
 function Button(props) {
     const styles = {
         base: {
-            padding: '15px',
-            borderRadius: '10px',
+            padding: '15px 15px 15px 15px',
+            borderRadius: '10px 10px 10px 10px',
             background: 'lightyellow',
-            fontWeight: 'bold'
+            fontWeight: 'bold',
+            ':hover': {
+                cursor: 'pointer'
+            }
         
         }
     }
-    return <div className="button" style={styles.base}>{props.children}</div>
+    return <div className="button" {...props} style={styles.base}>{props.children}</div>
 }
 
 export default Radium(Button);

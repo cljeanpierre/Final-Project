@@ -7,8 +7,12 @@ function Jumbotron(props) {
             background: 'darkblue',
             color: 'white',
             textAlign: 'center',
-            marginTop: '10px',
-            borderRadius: '15px'
+            margin: '10px 0px 0px 0px',
+            borderRadius: '15px 15px 15px 15px',
+            width: props.width,
+            margin: props.margin,
+            border: ".1rem solid transparent",
+            boxShadow: ".4rem .4rem .4rem darkgrey",
         
         }
     }
