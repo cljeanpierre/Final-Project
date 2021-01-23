@@ -7,6 +7,7 @@ function Div(props) {
       margin: props.margin,
       display: props.display,
       alignItems: props.alignItems,
+      padding: props.padding
     }
   }
   return (
