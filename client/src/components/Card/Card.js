@@ -10,7 +10,8 @@ const Card = (props) => {
      boxShadow: ".6rem .6rem .6rem darkgrey",
      textAlign: "center",
      borderRadius: ".2em",
-     backgroundColor:props.bGcolor
+     backgroundColor:props.bGcolor,
+     fontFamily: FontAwesome;
     }
   }
   return (
