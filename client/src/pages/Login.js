@@ -1,14 +1,15 @@
 import React from "react";
-import InputBox from "../components/InputBox/inputBox";
-import FlagContainer from "../components/FlagDiv/FlagContainer";
-import LoginBtn from "../components/Button/SignUp_LoginBtns";
-import Div from "../components/Div/Div";
-import Footer from "../components/Footer/Footer";
-import Title from "../components/Title/Title";
-import Container from "../components/Container/index";
-import FlagImg from "../components/Img/FlagImg";
-import Jumbotron from "../components/Jumbotron/index";
+import InputBox from "../components/Login-Page-Components/InputBox/inputBox";
+import FlagContainer from "../components/Login-Page-Components/Flags/FlagContainer";
+import LoginBtn from "../components/Login-Page-Components/Button/SignUp_LoginBtns";
+import Div from "../components/Login-Page-Components/Div/Div"
+import Footer from "../components/Login-Page-Components/Footer/Footer";
+import Title from "../components/Login-Page-Components/Title/Title";
+import Container from "../components/Login-Page-Components/Container/Container";
+import FlagImg from "../components/Login-Page-Components/Flags/FlagImg";
+import Jumbotron from "../components/Login-Page-Components/Jumbotron/Jumbotron";
 import {Link} from "react-router-dom"
+
 
 function Login() {
   const data = {
@@ -21,7 +22,6 @@ function Login() {
       "Aland Islands": "AX",
       Albania: "AL",
       Algeria: "DZ",
-      "American Samoa": "AS",
       Bahamas: "BS",
       "Palestinian Territory, Occupied": "PS",
       Panama: "PA",
@@ -35,7 +35,6 @@ function Login() {
       DK: "Denmark",
       DM: "Dominica",
       DO: "Dominican Republic (the)",
-      EC: "Ecuador",
       EG: "Egypt",
       SV: "El Salvador",
       GQ: "Equatorial Guinea",
@@ -44,50 +43,52 @@ function Login() {
   };
 
   return (
-    <Container  width="max-content" margin="0 auto">
-      <FlagContainer>
-        {" "}
-        {Object.values(data.flags).map(flag => (
-          <FlagImg margin="1rem" flag={flag} />
-        ))}{" "}
-      </FlagContainer>
+    <Container width="max-content" margin="0 auto">
+        <Div margin="2rem auto">
+          <FlagContainer>
+            {" "}
+            {Object.values(data.flags).map(flag => (
+              <FlagImg margin="1rem" flag={flag} />
+            ))}{" "}
+          </FlagContainer>
 
-        <Title name={data.title} />{" "}
+          <Div margin="2rem auto" alignItems="center">
+            <Title name={data.title} />{" "}
+            <Jumbotron margin="0rem auto" width="max-content">
+              <InputBox
+                padding=".5rem 2rem 0rem"
+                usernamePlaceholder={data.placeholder.username}
+              />{" "}
+              <InputBox
+                padding="0rem 2rem .5rem"
+                usernamePlaceholder={data.placeholder.password}
+              />
+            </Jumbotron>
 
-      <Div margin="2rem auto" alignItems="center">
-        <Jumbotron margin="0rem auto" width="max-content">
-          <InputBox
-            padding=".5rem 2rem 0rem"
-            usernamePlaceholder={data.placeholder.username}
-          />{" "}
-          <InputBox
-            padding="0rem 2rem .5rem"
-            usernamePlaceholder={data.placeholder.password}
-          />
-        </Jumbotron>
+            <Div display="flex">
+              <Link to={`/home`} role="button">
+                <LoginBtn> Login </LoginBtn> 
+              </Link>
+              <Link to={`/signup`} role="button">
+                <LoginBtn> Sign Up </LoginBtn>{" "}
+              </Link>
+              <Link to={`/scores`} role="button">
+                <LoginBtn> Highscores </LoginBtn>{" "}
+              </Link>
+            </Div>
+          </Div>
 
-        <Div display="flex">
-          <Link to={`/home`} role="button">
-            <LoginBtn> Login </LoginBtn> 
-          </Link>
-          <Link to={`/signup`} role="button">
-            <LoginBtn> Sign Up </LoginBtn>{" "}
-          </Link>
-          <Link to={`/scores`} role="button">
-            <LoginBtn> Highscores </LoginBtn>{" "}
-          </Link>
+          <FlagContainer >
+            {" "}
+            {Object.keys(data.flags2).map(flag => (
+              <FlagImg margin="1rem" flag={flag} />
+            ))}{" "}
+          </FlagContainer>
+        <Footer />
         </Div>
-      </Div>
-
-      <FlagContainer >
-        {" "}
-        {Object.keys(data.flags2).map(flag => (
-          <FlagImg margin="1rem" flag={flag} />
-        ))}{" "}
-      </FlagContainer>
-
-      <Footer />
+       
     </Container>
+   
   );
 }
 

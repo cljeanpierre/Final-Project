@@ -1,13 +1,13 @@
 import React from "react";
-import InputBox from "../components/InputBox/inputBox";
-import FlagContainer from "../components/FlagDiv/FlagContainer";
-import LoginBtn from "../components/Button/SignUp_LoginBtns";
-import Div from "../components/Div/Div";
-import Footer from "../components/Footer/Footer";
-import Title from "../components/Title/Title";
-import Container from "../components/Container/index";
-import SignUpFlag from "../components/Img/SignupFlag";
-import Jumbotron from "../components/Jumbotron/index";
+import InputBox from "../components/SignUp-Page-Components/InputBox/inputBox";
+import FlagContainer from "../components/SignUp-Page-Components/Flags/FlagContainer";
+import Btn from "../components/SignUp-Page-Components/Button/SignUp_LoginBtns";
+import Div from "../components/SignUp-Page-Components/Div/Div";
+import Footer from "../components/SignUp-Page-Components/Footer/Footer";
+import Title from "../components/SignUp-Page-Components/Title/Title";
+import Container from "../components/SignUp-Page-Components/Container/Container";
+import FlagImg from "../components/SignUp-Page-Components/Flags/FlagImg";
+import Jumbotron from "../components/SignUp-Page-Components/Jumbotron/Jumbotron";
 import {Link} from "react-router-dom"
 
 
@@ -48,48 +48,51 @@ function SignUp() {
   return (
     <Container width="max-content" margin="0rem auto" >
 
-      <FlagContainer>
-        {" "}
-        {Object.values(data.flags).map(flag => (
-          <SignUpFlag margin="1rem" flag={flag} />
-        ))}{" "}
-      </FlagContainer>
-
-        <Title name={data.title} />{" "}
-
       <Div margin="2rem auto" alignItems="center">
-        <Jumbotron margin="0rem auto" width="max-content">
-          <InputBox
-            padding=".5rem 2rem 0rem"
-            usernamePlaceholder={data.placeholder.username}
-          />{" "}
-          <InputBox
-            usernamePlaceholder={data.placeholder.password}
-          />
-          <InputBox
-            padding="0rem 0rem .5rem 0rem"
-            usernamePlaceholder={data.placeholder.reEnterPassword}
-          />
-        </Jumbotron>
+        <FlagContainer>
+          {" "}
+          {Object.values(data.flags).map(flag => (
+            <FlagImg margin="1rem" flag={flag} />
+          ))}{" "}
+        </FlagContainer>
 
-        <Div margin="0 auto" display="flex">
-          <Link to={`/`} role="button">
-            <LoginBtn> Login </LoginBtn> 
-          </Link>
-          <Link to={`/home`} role="button">
-            <LoginBtn> Sign Up </LoginBtn>{" "}
-          </Link>
+
+        <Div margin="2rem auto" alignItems="center">
+          <Title name={data.title} />{" "}
+          <Jumbotron margin="0rem auto" width="max-content">
+            <InputBox
+              padding=".5rem 2rem 0rem"
+              usernamePlaceholder={data.placeholder.username}
+            />{" "}
+            <InputBox
+              usernamePlaceholder={data.placeholder.password}
+            />
+            <InputBox
+              padding="0rem 0rem .5rem 0rem"
+              usernamePlaceholder={data.placeholder.reEnterPassword}
+            />
+          </Jumbotron>
+
+          <Div margin="0 auto" display="flex">
+            <Link to={`/`} role="button">
+              <Btn> Login </Btn> 
+            </Link>
+            <Link to={`/home`} role="button">
+              <Btn> Sign Up </Btn>{" "}
+            </Link>
+          </Div>
         </Div>
+
+        <FlagContainer>
+          {" "}
+          {Object.keys(data.flags2).map(flag => (
+            <FlagImg margin="1rem" flag={flag} />
+          ))}{" "}
+        </FlagContainer>
+
+        <Footer/>
       </Div>
-
-      <FlagContainer>
-        {" "}
-        {Object.keys(data.flags2).map(flag => (
-          <SignUpFlag margin="1rem" flag={flag} />
-        ))}{" "}
-      </FlagContainer>
-
-      <Footer/>
+      
     </Container>
   );
 }

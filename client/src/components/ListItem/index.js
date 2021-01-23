@@ -4,10 +4,10 @@ import React from "react";
 function ListItem({ children }) {
     const styles = {
         base: {
-            background: 'yellow',
+            background: '#cfdac8',
             padding: '10px 10px 10px 10px',
             display: 'list-item',
-            listStylePosition: 'inside'
+            listStylePosition: 'inside',
         }
     }
     return <li className="list-group-item" style={styles.base}>{children}</li>;

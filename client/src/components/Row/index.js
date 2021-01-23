@@ -8,7 +8,7 @@ function Row(props) {
             paddingLeft:'10px',
             paddingRight:'10px',
             paddingBottom: '10px',
-            background: 'lightgreen',
+            background: '#cfdac8',
             textAlign: 'center',
             marginTop: '5px',
             marginLeft:'5px',

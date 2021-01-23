@@ -12,7 +12,9 @@ const QuestionContext = createContext({
   loading: true,
   citiesArray: [],
   userScore: 0,
-  questionCount: 0 
+  questionCount: 0,
+  timeLeft: 100,
+  gameOver: false
 });
 
 const { Provider } = QuestionContext;
@@ -35,7 +37,7 @@ function reducer(state, action) {
 
     case "setQuestion":
       return {
-        ...state, 
+        ...state,
         correctChoice: action.correctChoice,
         choice1: action.countryChoices[0],
         choice2: action.countryChoices[1],
@@ -45,7 +47,7 @@ function reducer(state, action) {
         loading: false,
         flag: action.flag,
         userScore: action.userScore,
-        questionCount: action.questionCount++
+        questionCount: action.questionCount + 1
       };
 
     case "loading":
@@ -53,6 +55,18 @@ function reducer(state, action) {
         ...state,
         loading: true
       };
+
+    case "updateTime":
+      return {
+        ...state,
+        timeLeft: action.timeLeft
+      };
+    case "gameOver":
+      return {
+        ...state,
+        gameOver: true
+      };
+
     default:
       return state;
   }
@@ -71,7 +85,9 @@ function QuestionProvider({ value = [], ...props }) {
     correctChoice: "",
     lastAnswer: "",
     userScore: 0,
-    questionCount: 0 
+    questionCount: 0,
+    timeLeft: 100,
+    gameOver: false
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

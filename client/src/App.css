@@ -1,5 +1,26 @@
+* {
+  font-family: 'Montserrat', sans-serif!important;
+}
+
+.main-bg {
+    background: url("./map.jpg") no-repeat; 
+    background-size: cover;
+    /* min-width: 100%;
+    min-height: 100%; */
+    height: auto;
+}
+
+.main-bg2 {
+  background: url("./compass.jpg") no-repeat; 
+  background-size: cover;
+  /* min-width: 100%;
+  min-height: 100%; */
+  height: auto;
+}
+
 .App {
   text-align: center;
+  
 }
 
 .App-logo {

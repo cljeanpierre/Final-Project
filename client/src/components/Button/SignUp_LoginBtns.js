@@ -3,7 +3,7 @@ import React from "react";
 export default function SignUpBtn(props) {
   const style ={
     base:{
-      backgroundColor: "#d6efc7",
+      backgroundColor: "#cfdac8",
       borderRadius: "7px",
       margin: "1.5rem 1rem 0rem 1rem",
       fontFamily:"Verdana, Geneva, Tahoma, sans-serif;",

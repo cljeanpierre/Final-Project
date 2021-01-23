@@ -1,5 +1,5 @@
 import React from "react";
-import { propTypes } from "react-country-flag";
+// import { propTypes } from "react-country-flag";
 
 const Footer = (props) =>{
     const style ={

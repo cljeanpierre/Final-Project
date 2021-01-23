@@ -1,21 +1,23 @@
 import React from "react";
-import Radium from "radium";
+import Radium, { StyleRoot } from "radium";
 
 function Container(props) {
     const styles = {
         base: {
-            backgroundColor: '#eeeeee',
+            backgroundColor: '#e8eae6',
             textAlign: 'center',
-            padding: '0px',
             borderRadius: '15px',
             position: "fixed",
             top: "50%",
             left: "50%",
             transform: "translate(-50%, -50%)"
-            
         }
     }
-    return <div className="row" style={styles.base}>{props.children}</div>
+    return (
+    <StyleRoot>
+    <div className="container-fluid" style={styles.base}>{props.children}</div>
+    </StyleRoot>
+    );
 }
 
 export default Radium(Container);
