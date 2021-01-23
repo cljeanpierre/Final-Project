@@ -1,19 +1,22 @@
 import React from "react";
-import Radium from "radium";
+import Radium, { StyleRoot } from "radium";
 
 function Container(props) {
     const styles = {
         base: {
-            backgroundColor: '#eeeeee',
+            backgroundColor: '#e8eae6',
             textAlign: 'center',
             padding: '15px',
-            margin: '0',
-            height: 'max-content',
-            borderRadius: '15px'
+            height: '100vh',
+            borderRadius: '15px',
         
         }
     }
-    return <div className="container" style={styles.base}>{props.children}</div>
+    return (
+    <StyleRoot>
+    <div className="container overflow-auto" style={styles.base}>{props.children}</div>
+    </StyleRoot>
+    );
 }
 
 export default Radium(Container);

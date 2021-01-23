@@ -5,7 +5,7 @@ function Col(props) {
     const styles = {
         base: {
             padding: '25px 25px 25px 25px',
-            background: 'grey',
+            background: 'transparent',
             textAlign: 'center',
             fontColor: 'black',
             height: 'auto',

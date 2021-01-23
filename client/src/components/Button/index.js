@@ -6,12 +6,18 @@ function Button(props) {
         base: {
             padding: '15px 15px 15px 15px',
             borderRadius: '10px 10px 10px 10px',
+            marginBottom: "0.5em",
             background: 'lightyellow',
             fontWeight: 'bold',
+            cursor: 'pointer',
             ':hover': {
-                cursor: 'pointer'
-            }
-        
+                background: 'white'
+            },
+            ':active': {
+                background: '#7c9473'
+            },
+            
+            
         }
     }
     return <div className="button" {...props} style={styles.base}>{props.children}</div>

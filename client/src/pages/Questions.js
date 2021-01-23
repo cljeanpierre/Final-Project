@@ -7,6 +7,7 @@ import Jumbotron from "../components/Jumbotron";
 import Row from "../components/Row";
 import Button from "../components/Button";
 import Col from "../components/Col";
+import Card from "../components/Card";
 
 let firstRun;
 
@@ -39,12 +40,12 @@ function Questions() {
         const quizTimeout = setTimeout(() => {
             timeLeft = state.timeLeft - 1;
             if (timeLeft < 0) {
-                dispatch({type: "gameOver"})
+                dispatch({ type: "gameOver" })
 
             } else {
                 dispatch({ type: "updateTime", timeLeft: timeLeft });
             }
-            
+
         }, 1000);
 
     }, [state]);
@@ -102,52 +103,47 @@ function Questions() {
     };
 
     return (
-        <Container>
-            <Row>
-                <div className="card-body">
-                    <h3>Score {state.userScore}</h3>
-                </div>
-                <div className="card-body">
-                    <h3>Question {state.questionCount}</h3>
-                </div>
-                <div className="card-body">
-                    <h3>Timer: {state.timeLeft} secs</h3>
-                </div>
-            </Row>
-            <Jumbotron>
-                <h1 className="styling">Which country does this flag belong to?</h1>
-            </Jumbotron>
-            <Col>
-                <Row>
-                    <img style={{ borderRadius: "0.5rem" }} height="100px" src={state.flag} />
-                </Row>
+        <div className="container-fluid main-bg">
+            <Container>
                 <Row>
                     <div className="card-body">
-                        <Button onClick={() => createQuestion(state.choice1)}>{state.choice1}</Button>
+                        <h3>Score {state.userScore}</h3>
                     </div>
-                </Row>
-                <Row>
                     <div className="card-body">
-                        <Button onClick={() => createQuestion(state.choice2)}>{state.choice2}</Button>
+                        <h3>Question {state.questionCount}</h3>
                     </div>
-                </Row>
-                <Row>
                     <div className="card-body">
-                        <Button onClick={() => createQuestion(state.choice3)}>{state.choice3}</Button>
+                        <h3>Timer: {state.timeLeft} secs</h3>
                     </div>
                 </Row>
-                <Row>
-                    <div className="card-body">
-                        <Button onClick={() => createQuestion(state.choice4)}>{state.choice4}</Button>
-                    </div>
-                </Row>
-                <Row>
-                    <div className="card-body">
-                        <Button onClick={() => createQuestion(state.choice5)}>{state.choice5}</Button>
-                    </div>
-                </Row>
-            </Col>
-        </Container>
+                <Jumbotron style={{ padding: "0.5rem" }}>
+                    <h1>Which country does this flag belong to?</h1>
+                </Jumbotron>
+                <Card>
+                    <Row>
+                        <Col>
+                            <img className="img-fluid align-middle" style={{ borderRadius: "0.5rem", marginBottom: "2em", maxHeight: "15em" }} src={state.flag} />
+                        </Col>
+                        <Col>
+                            <div className="card-body" style={{ paddingTop: "0" }}>
+
+                                <Button onClick={() => createQuestion(state.choice1)}>{state.choice1}</Button>
+
+                                <Button onClick={() => createQuestion(state.choice2)}>{state.choice2}</Button>
+
+                                <Button onClick={() => createQuestion(state.choice3)}>{state.choice3}</Button>
+
+                                <Button onClick={() => createQuestion(state.choice4)}>{state.choice4}</Button>
+
+                                <Button onClick={() => createQuestion(state.choice5)}>{state.choice5}</Button>
+
+                            </div>
+                        </Col>
+
+                    </Row>
+                </Card>
+            </Container>
+        </div>
     )
 }
 
