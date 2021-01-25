@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useQuestionContext } from "../utils/GlobalState";
 import axios from "axios";
+// import { View } from "react-native";
+// import FlashMessage from "react-native-flash-message";
 
 import Container from "../components/Container";
 import Jumbotron from "../components/Jumbotron";
@@ -54,10 +56,6 @@ function Questions() {
             } else {
                 dispatch({ type: "updateTime", timeLeft: timeLeft });
             }
-<<<<<<< HEAD
-=======
-
->>>>>>> 0a8196c49bf2c3f8c7ec4ede0e6b71ad1aa9153c
         }, 1000);
     }, [state]);
 
@@ -78,6 +76,7 @@ function Questions() {
 
         if (userAnswer === state.correctChoice) {
             newScore = state.userScore + 10;
+            // setTimeout()
         } else {
             if (state.questionCount !== 0) {
                 newScore = state.userScore - 1;
@@ -115,10 +114,10 @@ function Questions() {
             <Container>
                 <Row>
                     <div className="card-body">
-                        <h3>Score {state.userScore}</h3>
+                        <h3>Score: {state.userScore}</h3>
                     </div>
                     <div className="card-body">
-                        <h3>Question {state.questionCount}</h3>
+                        <h3>Question: {state.questionCount}</h3>
                     </div>
                     <div className="card-body">
                         <h3>Timer: {formatTime(state.timeLeft)} left</h3>

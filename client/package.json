@@ -5,15 +5,27 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.12.12",
     "axios": "^0.21.1",
     "radium": "^0.26.1",
     "react": "^16.13.1",
     "react-country-flag": "^2.3.0",
     "react-dom": "^16.13.1",
     "react-google-login": "^5.2.2",
+    "react-native": "^0.63.4",
+    "react-native-flash-message": "^0.1.21",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-world-flags": "^1.4.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react",
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-react-jsx"
+    ]
   },
   "scripts": {
     "start": "react-scripts start",
