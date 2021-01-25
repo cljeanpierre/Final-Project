@@ -1,13 +1,13 @@
 import React from "react";
-import InputBox from "../components/SignUp-Page-Components/InputBox/inputBox";
-import FlagContainer from "../components/SignUp-Page-Components/Flags/FlagContainer";
-import Btn from "../components/SignUp-Page-Components/Button/SignUp_LoginBtns";
-import Div from "../components/SignUp-Page-Components/Div/Div";
-import Footer from "../components/SignUp-Page-Components/Footer/Footer";
-import Title from "../components/SignUp-Page-Components/Title/Title";
-import Container from "../components/SignUp-Page-Components/Container/Container";
-import FlagImg from "../components/SignUp-Page-Components/Flags/FlagImg";
-import Jumbotron from "../components/SignUp-Page-Components/Jumbotron/Jumbotron";
+import InputBox from "../components/SignUp-Page/InputBox/inputBox";
+import FlagContainer from "../components/SignUp-Page/Flags/FlagContainer";
+import Btn from "../components/SignUp-Page/Button/SignUp_LoginBtns";
+import Div from "../components/SignUp-Page/Div/Div";
+import Footer from "../components/SignUp-Page/Footer/Footer";
+import Title from "../components/SignUp-Page/Title/Title";
+import Container from "../components/SignUp-Page/Container/Container";
+import FlagImg from "../components/SignUp-Page/Flags/FlagImg";
+import Jumbotron from "../components/SignUp-Page/Jumbotron/Jumbotron";
 import {Link} from "react-router-dom"
 
 

@@ -1,13 +1,13 @@
 import React from "react";
-import InputBox from "../components/Login-Page-Components/InputBox/inputBox";
-import FlagContainer from "../components/Login-Page-Components/Flags/FlagContainer";
-import LoginBtn from "../components/Login-Page-Components/Button/SignUp_LoginBtns";
-import Div from "../components/Login-Page-Components/Div/Div"
-import Footer from "../components/Login-Page-Components/Footer/Footer";
-import Title from "../components/Login-Page-Components/Title/Title";
-import Container from "../components/Login-Page-Components/Container/Container";
-import FlagImg from "../components/Login-Page-Components/Flags/FlagImg";
-import Jumbotron from "../components/Login-Page-Components/Jumbotron/Jumbotron";
+import InputBox from "../components/Login-Page/InputBox/inputBox";
+import FlagContainer from "../components/Login-Page/Flags/FlagContainer";
+import LoginBtn from "../components/Login-Page/Button/SignUp_LoginBtns";
+import Div from "../components/Login-Page/Div/Div"
+import Footer from "../components/Login-Page/Footer/Footer";
+import Title from "../components/Login-Page/Title/Title";
+import Container from "../components/Login-Page/Container/Container";
+import FlagImg from "../components/Login-Page/Flags/FlagImg";
+import Jumbotron from "../components/Login-Page/Jumbotron/Jumbotron";
 import {Link} from "react-router-dom"
 
 

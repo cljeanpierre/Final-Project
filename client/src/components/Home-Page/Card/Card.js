@@ -8,7 +8,8 @@ function Card(props) {
             textAlign: 'center',
             padding: '15px 15px 15px 15px',
             height: 'auto',
-            borderRadius: '15px 15px 15px 15px'
+            borderRadius: '1.2rem',
+            border: 'none'
         }
     }
     return (

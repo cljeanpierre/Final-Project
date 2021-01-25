@@ -20,7 +20,7 @@ function Button(props) {
             
         }
     }
-    return <div className="button" {...props} style={styles.base}>{props.children}</div>
+    return <div type="button" className="button" {...props} style={styles.base}>{props.children}</div>
 }
 
 export default Radium(Button);
