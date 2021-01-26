@@ -1,4 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+
+import API from "../utils/API";
+import { useQuestionContext } from "../utils/GlobalState";
+
 import InputBox from "../components/SignUp-Page/InputBox/inputBox";
 import FlagContainer from "../components/SignUp-Page/Flags/FlagContainer";
 import Btn from "../components/SignUp-Page/Button/SignUp_LoginBtns";
@@ -8,10 +13,17 @@ import Title from "../components/SignUp-Page/Title/Title";
 import Container from "../components/SignUp-Page/Container/Container";
 import FlagImg from "../components/SignUp-Page/Flags/FlagImg";
 import Jumbotron from "../components/SignUp-Page/Jumbotron/Jumbotron";
-import {Link} from "react-router-dom"
-
 
 function SignUp() {
+  const history = useHistory();
+
+  const [state, setState] = useState({
+    username: "",
+    password: ""
+  });
+
+  const [globalState, dispatch] = useQuestionContext();
+
   const data = {
     placeholder: {
       username: "Enter a Username",
@@ -26,17 +38,15 @@ function SignUp() {
       "American Samoa": "AS",
       Bahamas: "BS",
       "Palestinian Territory, Occupied": "PS",
-      Panama: "PA",
       "United Arab Emirates": "AE",
       "United Kingdom": "GB",
       "United datas": "US"
     },
     flags2: {
       CZ: "Czechia",
-      CI: "Côte d'Ivoire",
+      AZ: "Azerbaijan",
       DK: "Denmark",
       DM: "Dominica",
-      DO: "Dominican Republic (the)",
       EC: "Ecuador",
       EG: "Egypt",
       SV: "El Salvador",
@@ -45,55 +55,79 @@ function SignUp() {
     }
   };
 
+  const handleSignup = e => {
+    e.preventDefault();
+    API.signUpAuth(state)
+      .then(res => {
+        dispatch({
+          type: "setUsername",
+          name: JSON.parse(res.config.data).username
+        });
+        history.push("/home");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  function HandleInputChange(event) {
+    // Getting the value and name of the input which triggered the change
+    const { name, value } = event.target;
+
+    // Updating the input's state
+    setState({ ...state, [name]: value });
+  }
+
   return (
-    <Container width="max-content" margin="0rem auto" >
-
-      <Div margin="2rem auto" alignItems="center">
-        <FlagContainer>
-          {" "}
-          {Object.values(data.flags).map(flag => (
-            <FlagImg margin="1rem" flag={flag} />
-          ))}{" "}
-        </FlagContainer>
-
-
-        <Div margin="2rem auto" alignItems="center">
-          <Title name={data.title} />{" "}
-          <Jumbotron margin="0rem auto" width="max-content">
-            <InputBox
-              padding=".5rem 2rem 0rem"
-              usernamePlaceholder={data.placeholder.username}
-            />{" "}
-            <InputBox
-              usernamePlaceholder={data.placeholder.password}
-            />
-            <InputBox
-              padding="0rem 0rem .5rem 0rem"
-              usernamePlaceholder={data.placeholder.reEnterPassword}
-            />
-          </Jumbotron>
-
-          <Div margin="0 auto" display="flex">
-            <Link to={`/`} role="button">
-              <Btn> Login </Btn> 
-            </Link>
-            <Link to={`/home`} role="button">
-              <Btn> Sign Up </Btn>{" "}
-            </Link>
-          </Div>
-        </Div>
-
-        <FlagContainer>
-          {" "}
-          {Object.keys(data.flags2).map(flag => (
-            <FlagImg margin="1rem" flag={flag} />
-          ))}{" "}
-        </FlagContainer>
-
-        <Footer/>
+    <Container width="max-content" margin="0rem auto" padding="0rem 0rem .2rem">
+    <FlagContainer margin="0rem auto 2rem">
+      {" "}
+      {Object.values(data.flags).map(flag => (
+        <FlagImg margin="1rem" flag={flag} />
+      ))}{" "}
+    </FlagContainer>
+    <Title name={data.title} />{" "}
+    <Div margin="2rem auto" alignItems="center">
+      <Jumbotron margin="0rem auto" width="max-content">
+      <InputBox
+          value={state.username}
+          padding=".5rem 2rem 0rem"
+          placeholder={data.placeholder.username}
+          onChange={HandleInputChange}
+          name="username"
+        />
+        <InputBox
+          value={state.password}
+          placeholder={data.placeholder.password}
+          onChange={HandleInputChange}
+          name="password"
+        />
+        <InputBox
+          padding="0rem 0rem .5rem 0rem"
+          placeholder={data.placeholder.reEnterPassword}
+        />
+      </Jumbotron>
+      <Div>
+        <Link to={`/`} role="Btn">
+          <Btn> Login </Btn>
+        </Link>
+        <Link to={`/home`} role="Btn">
+          <Btn onClick={handleSignup} > Sign Up </Btn>{" "}
+        </Link>
+        <Link to={`/scores`} role="Btn">
+          <Btn> Highscores </Btn>{" "}
+        </Link>
       </Div>
-      
-    </Container>
+    </Div>
+
+    <FlagContainer margin="0 auto">
+      {" "}
+      {Object.keys(data.flags2).map(flag => (
+        <FlagImg margin="1rem" flag={flag} />
+      ))}{" "}
+    </FlagContainer>
+    <Footer padding="0rem 0rem .9rem 0rem" />
+  </Container>
   );
 }
 

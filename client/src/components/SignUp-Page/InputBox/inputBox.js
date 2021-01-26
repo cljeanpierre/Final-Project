@@ -16,7 +16,7 @@ const InputBox = (props) => {
             fontSize: "1rem",
             border: ".1rem solid transparent",
             boxShadow: ".1rem .1rem .1rem darkgrey",
-            borderRadius: '5px',}}type="text" placeholder={props.usernamePlaceholder}
+            borderRadius: '5px',}}type="text" placeholder={props.placeholder}
             />
         </div>
     )
