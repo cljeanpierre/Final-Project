@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useQuestionContext } from "../utils/GlobalState";
 import axios from "axios";
+import { Link, useHistory } from "react-router-dom";
 // import { View } from "react-native";
 // import FlashMessage from "react-native-flash-message";
 
@@ -14,8 +15,13 @@ import Card from "../components/Card";
 let firstRun;
 
 function Questions() {
+    
     //Hook into global context
     const [state, dispatch] = useQuestionContext();
+    const history = useHistory();
+    if (!state.isAuthenticated) {
+        history.push("/login");
+    }
 
     
     const addZero = (time) => {

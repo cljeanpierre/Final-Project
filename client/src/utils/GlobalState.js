@@ -14,7 +14,9 @@ const QuestionContext = createContext({
   userScore: 0,
   questionCount: 0,
   timeLeft: 300,
-  gameOver: false
+  gameOver: false,
+  userName: "",
+  isAuthenticated: false
 });
 
 const { Provider } = QuestionContext;
@@ -60,7 +62,17 @@ function reducer(state, action) {
         ...state,
         gameOver: true
       };
-
+    // case "userAuthenticated":
+    //   return {
+    //     ...state,
+    //     isAuthenticated: true
+    //   };
+    case "setUsername":
+      return {
+        ...state,
+        userName: action.name,
+        isAuthenticated: true
+      };
     default:
       return state;
   }
@@ -81,7 +93,9 @@ function QuestionProvider({ value = [], ...props }) {
     userScore: 0,
     questionCount: 0,
     timeLeft: 300,
-    gameOver: false
+    gameOver: false,
+    userName: "",
+    isAuthenticated: false
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

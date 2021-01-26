@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+
+import API from "../utils/API";
+import { useQuestionContext } from "../utils/GlobalState";
+
 import InputBox from "../components/InputBox/inputBox";
 import FlagDiv from "../components/FlagDiv/FlagDiv";
 import LoginBtn from "../components/Button/SignUp_LoginBtns";
@@ -8,8 +13,6 @@ import Title from "../components/Title/Title";
 import Container from "../components/Container/index";
 import SignUpFlag from "../components/Img/SignupFlag";
 import Jumbotron from "../components/Jumbotron/index";
-import { Link, useHistory } from "react-router-dom"
-import API from "../utils/API";
 
 function SignUp() {
 
@@ -19,6 +22,8 @@ function SignUp() {
     username: "",
     password: ""
   });
+
+  const [globalState, dispatch] = useQuestionContext();
 
   const data = {
     placeholder: {
@@ -55,8 +60,9 @@ function SignUp() {
     e.preventDefault();
     API.signUpAuth(state)
       .then(res => {
-        history.push("/");
-        console.log(res)} )
+        dispatch({type: "setUsername", name: JSON.parse(res.config.data).username});
+        history.push("/home");
+      })
       .catch(err => {
         console.log(err);
       });

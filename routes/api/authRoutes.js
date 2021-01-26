@@ -1,33 +1,30 @@
-// Requiring our models and passport as we've configured it
 const User = require("../../models/user");
 const passport = require("../../config/passport");
+const router = require("express").Router();
 
+router.post("/login", passport.authenticate("local"), (req, res) => {
+  res.json({
+    email: req.user.email,
+    id: req.user.id
+  })
+});
 
-// const router = require("express").Router();
-
-module.exports = function(router) {
-  router.post("/api/auth/login", passport.authenticate("local"), (req, res) => {
-    res.json({
-      email: req.user.email,
-      id: req.user.id
+router.post("/signup", (req, res) => {
+  req.body.password = User.generateHash(req.body.password);
+  User.create({
+    email: req.body.username,
+    password: req.body.password
+  })
+    .then(() => {
+      res.end();
     })
-  });
-
-router.post("/api/auth/signup", (req, res) => {
-    req.body.password = User.generateHash(req.body.password);
-    User.create({
-      email: req.body.username,
-      password: req.body.password
+    .catch(err => {
+      res.status(500).json(err);
     })
-      .then(() => {
-        res.redirect(307, "/login");
-      })
-      .catch(err => {
-        res.status(401).json(err);
-      })
-  });
-}
+});
 
+
+module.exports = router;
 
 
 
