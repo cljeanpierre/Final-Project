@@ -15,7 +15,7 @@ const SignUpFlag = (props) => {
       height: "100%",
       border: ".1rem solid transparent",
       boxShadow: ".6rem .6rem .6rem darkgrey",
-      borderRadius: "0.94rem",
+      borderRadius: "0.9rem",
     }
   }
 

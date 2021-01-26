@@ -9,7 +9,7 @@ function Col(props) {
             textAlign: 'center',
             fontColor: 'black',
             height: 'auto',
-            borderRadius: '0.31rem 0.31rem 0.31rem 0.31rem'
+            borderRadius: '0.3rem 0.3rem 0.3rem 0.3rem'
         }
     }
     return <div className="col" style={styles.base}>{props.children}</div>;
