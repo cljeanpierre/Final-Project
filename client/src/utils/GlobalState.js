@@ -13,8 +13,10 @@ const QuestionContext = createContext({
   citiesArray: [],
   userScore: 0,
   questionCount: 0,
-  timeLeft: 100,
-  gameOver: false
+  timeLeft: 300,
+  gameOver: false,
+  userName: "",
+  isAuthenticated: false
 });
 
 const { Provider } = QuestionContext;
@@ -28,12 +30,6 @@ function reducer(state, action) {
         loading: false,
         citiesArray: action.citiesArray
       };
-    // case "updateQuestion":
-    //   return {
-    //     ...state,
-    //     loading: false,
-    //     flag: action.flag,
-    //   };
 
     case "setQuestion":
       return {
@@ -66,7 +62,17 @@ function reducer(state, action) {
         ...state,
         gameOver: true
       };
-
+    // case "userAuthenticated":
+    //   return {
+    //     ...state,
+    //     isAuthenticated: true
+    //   };
+    case "setUsername":
+      return {
+        ...state,
+        userName: action.name,
+        isAuthenticated: true
+      };
     default:
       return state;
   }
@@ -86,8 +92,10 @@ function QuestionProvider({ value = [], ...props }) {
     lastAnswer: "",
     userScore: 0,
     questionCount: 0,
-    timeLeft: 100,
-    gameOver: false
+    timeLeft: 300,
+    gameOver: false,
+    userName: "",
+    isAuthenticated: false
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

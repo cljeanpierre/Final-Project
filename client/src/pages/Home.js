@@ -5,19 +5,29 @@ import Card from "../components/Card";
 import Jumbotron from "../components/Jumbotron";
 // import Row from "../components/Row";
 import Button from "../components/Button";
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom";
 import Logo from "../quiz-logo.png";
+
+import { useQuestionContext } from "../utils/GlobalState";
+
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDoorOpen, faPlayCircle, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 
 
+
 function Home(props) {
+    const history = useHistory();
+    const [globalState, dispatch] = useQuestionContext();
+    if (!globalState.isAuthenticated) {
+        history.push("/login");
+    }
     return (
         <div className="container-fluid main-bg overflow-auto">
             <Container fluid>
                 <Jumbotron>
                     <img className="img-fluid" src={Logo} alt="logo"></img>
-                    <h1>Welcome User</h1>
+                    <h1>Welcome {globalState.userName}</h1>
                 </Jumbotron>
 
                 <div className="card-deck space-between mt-5">

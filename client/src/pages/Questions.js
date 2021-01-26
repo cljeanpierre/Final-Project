@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
 import { useQuestionContext } from "../utils/GlobalState";
 import axios from "axios";
+import { Link, useHistory } from "react-router-dom";
+// import { View } from "react-native";
+// import FlashMessage from "react-native-flash-message";
 
 import Container from "../components/Container";
 import Jumbotron from "../components/Jumbotron";
@@ -12,11 +15,28 @@ import Card from "../components/Card";
 let firstRun;
 
 function Questions() {
-
+    
     //Hook into global context
     const [state, dispatch] = useQuestionContext();
+    const history = useHistory();
+    if (!state.isAuthenticated) {
+        history.push("/login");
+    }
 
+    
+    const addZero = (time) => {
+        if (time<10) {
+            return "0"+time;
+        } else {
+            return time;
+        }
+    }
 
+    const formatTime = (time) => {
+        const minutes =Math.floor(time/60);
+        const seconds = time%60;
+        return `${addZero(minutes)}:${addZero(seconds)}`;
+    }
     //Make API call to get array of countries with all of their information
     useEffect(() => {
         firstRun = true;
@@ -29,14 +49,11 @@ function Questions() {
 
     //Refresh the page when the state changes
     useEffect(() => {
-        console.log(state);
         let timeLeft = state.timeLeft;
         if (firstRun && !state.loading) {
-
             createQuestion();
             firstRun = false;
         }
-
         const quizTimeout = setTimeout(() => {
             timeLeft = state.timeLeft - 1;
             if (timeLeft < 0) {
@@ -45,9 +62,7 @@ function Questions() {
             } else {
                 dispatch({ type: "updateTime", timeLeft: timeLeft });
             }
-
         }, 1000);
-
     }, [state]);
 
     //Create a random order for multiple choice country names
@@ -67,6 +82,7 @@ function Questions() {
 
         if (userAnswer === state.correctChoice) {
             newScore = state.userScore + 10;
+            // setTimeout()
         } else {
             if (state.questionCount !== 0) {
                 newScore = state.userScore - 1;
@@ -94,9 +110,6 @@ function Questions() {
             state.loading = true;
             countryChoices.push(correctChoice);
             console.log(flagImg);
-            // console.log(correctChoice);
-            // console.log(countryChoices);
-            // console.log(randomizeOrder(countryChoices));
             dispatch({ type: "setQuestion", correctChoice: correctChoice, countryChoices: randomizeOrder(countryChoices), flag: flagImg, questionCount: state.questionCount, userScore: newScore });
 
         }
@@ -107,13 +120,13 @@ function Questions() {
             <Container>
                 <Row>
                     <div className="card-body">
-                        <h3>Score {state.userScore}</h3>
+                        <h3>Score: {state.userScore}</h3>
                     </div>
                     <div className="card-body">
-                        <h3>Question {state.questionCount}</h3>
+                        <h3>Question: {state.questionCount}</h3>
                     </div>
                     <div className="card-body">
-                        <h3>Timer: {state.timeLeft} secs</h3>
+                        <h3>Timer: {formatTime(state.timeLeft)} left</h3>
                     </div>
                 </Row>
                 <Jumbotron style={{ padding: "0.5rem" }}>

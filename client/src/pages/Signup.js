@@ -1,4 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+
+import API from "../utils/API";
+import { useQuestionContext } from "../utils/GlobalState";
+
 import InputBox from "../components/InputBox/inputBox";
 import FlagDiv from "../components/FlagDiv/FlagDiv";
 import LoginBtn from "../components/Button/SignUp_LoginBtns";
@@ -8,10 +13,18 @@ import Title from "../components/Title/Title";
 import Container from "../components/Container/index";
 import SignUpFlag from "../components/Img/SignupFlag";
 import Jumbotron from "../components/Jumbotron/index";
-import {Link} from "react-router-dom"
-
 
 function SignUp() {
+
+  const history = useHistory();
+
+  const [state, setState] = useState({
+    username: "",
+    password: ""
+  });
+
+  const [globalState, dispatch] = useQuestionContext();
+
   const data = {
     placeholder: {
       username: "Enter a Username",
@@ -26,17 +39,15 @@ function SignUp() {
       "American Samoa": "AS",
       Bahamas: "BS",
       "Palestinian Territory, Occupied": "PS",
-      Panama: "PA",
       "United Arab Emirates": "AE",
       "United Kingdom": "GB",
       "United datas": "US"
     },
     flags2: {
       CZ: "Czechia",
-      CI: "Côte d'Ivoire",
+      AZ: "Azerbaijan",
       DK: "Denmark",
       DM: "Dominica",
-      DO: "Dominican Republic (the)",
       EC: "Ecuador",
       EG: "Egypt",
       SV: "El Salvador",
@@ -44,6 +55,28 @@ function SignUp() {
       ER: "Eritrea"
     }
   };
+
+  const handleSignup = (e) => {
+    e.preventDefault();
+    API.signUpAuth(state)
+      .then(res => {
+        dispatch({type: "setUsername", name: JSON.parse(res.config.data).username});
+        history.push("/home");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  function HandleInputChange(event) {
+    // Getting the value and name of the input which triggered the change
+    const { name, value } = event.target;
+
+    // Updating the input's state
+    setState({...state,
+      [name]: value});
+  };
+
 
   return (
     <Container width="max-content" margin="0rem auto" >
@@ -55,29 +88,35 @@ function SignUp() {
         ))}{" "}
       </FlagDiv>
 
-        <Title name={data.title} />{" "}
+      <Title name={data.title} />{" "}
 
       <Div margin="2rem auto" alignItems="center">
         <Jumbotron margin="0rem auto" width="max-content">
           <InputBox
+            value={state.username}
             padding=".5rem 2rem 0rem"
-            usernamePlaceholder={data.placeholder.username}
-          />{" "}
+            placeholder={data.placeholder.username}
+            onChange={HandleInputChange}
+            name="username"
+          />
           <InputBox
-            usernamePlaceholder={data.placeholder.password}
+            value={state.password}
+            placeholder={data.placeholder.password}
+            onChange={HandleInputChange}
+            name="password"
           />
           <InputBox
             padding="0rem 0rem .5rem 0rem"
-            usernamePlaceholder={data.placeholder.reEnterPassword}
+            placeholder={data.placeholder.reEnterPassword}
           />
         </Jumbotron>
 
         <Div margin="0 auto" display="flex">
           <Link to={`/`} role="button">
-            <LoginBtn> Login </LoginBtn> 
+            <LoginBtn> Login </LoginBtn>
           </Link>
           <Link to={`/home`} role="button">
-            <LoginBtn> Sign Up </LoginBtn>{" "}
+            <LoginBtn onClick={handleSignup}> Sign Up </LoginBtn>{" "}
           </Link>
         </Div>
       </Div>
@@ -89,7 +128,7 @@ function SignUp() {
         ))}{" "}
       </FlagDiv>
 
-      <Footer/>
+      <Footer />
     </Container>
   );
 }
