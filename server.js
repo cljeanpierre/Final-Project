@@ -7,7 +7,13 @@ const passport = require("./config/passport");
 const routes = require("./routes");
 const PORT = process.env.PORT || 3001;
 const app = express();
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/quiz");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/quiz"),
+{
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false
+}
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
