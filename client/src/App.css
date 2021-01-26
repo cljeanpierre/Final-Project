@@ -3,7 +3,7 @@
 }
 
 .main-bg {
-    background: url("./map.jpg") no-repeat; 
+    background: url("./globe.jpg") no-repeat; 
     background-size: cover;
     /* min-width: 100%;
     min-height: 100%; */
@@ -36,10 +36,6 @@
   font-size: calc(10px + 2vmin);
   color: white;
  
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {

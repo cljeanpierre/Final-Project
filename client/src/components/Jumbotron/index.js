@@ -13,7 +13,7 @@ function Jumbotron(props) {
             border: ".1rem solid transparent",
             boxShadow: ".4rem .4rem .4rem darkgrey",
             '@media (min-width: 576px)': {
-                padding: '2rem'
+                padding: '1rem'
             }    
         }
     }

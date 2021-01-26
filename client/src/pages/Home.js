@@ -7,7 +7,12 @@ import Jumbotron from "../components/Jumbotron";
 import Button from "../components/Button";
 import { Link, useHistory } from "react-router-dom";
 import Logo from "../quiz-logo.png";
+
 import { useQuestionContext } from "../utils/GlobalState";
+
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDoorOpen, faPlayCircle, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -25,32 +30,43 @@ function Home(props) {
                     <h1>Welcome {globalState.userName}</h1>
                 </Jumbotron>
 
-                <div className="card-deck space-between mb-3">
+                <div className="card-deck space-between mt-5">
                     <Card>
                         <div className="card-body">
-                            <h1 className="card-title">Game Choice</h1>
-                            <br></br>
-                            <Link to={`/questions`} role="button" className="btn btn-link">
-                                <Button>Play</Button>
+                            <h1 className="card-title">Flag Quiz</h1>
+                        </div>
+                        <div className="card-body">
+                        <Link to={`/questions`} role="button" className="btn btn-link">
+                                <Button><FontAwesomeIcon icon={faPlayCircle} size="3x"/></Button>
                             </Link>
-
                         </div>
                     </Card>
                     <Card>
                         <div className="card-body">
                             <h1 className="card-title">High Scores</h1>
-                            <br></br>
-                            <Link to={`/scores`} role="button" className="btn btn-link">
-                                <Button>View</Button>
+                        </div>
+                        <div className="card-body">
+                        <Link to={`/scores`} role="button" className="btn btn-link">
+                                <Button><FontAwesomeIcon icon={faStarHalfAlt} size="3x"/></Button>
+                            </Link>
+                        </div>
+                    </Card>
+                    <Card>
+                        <div className="card-body">
+                            <h1 className="card-title">Logout</h1>
+                        </div>
+                        <div className="card-body">
+                        <Link to={`/scores`} role="button" className="btn btn-link">
+                                <Button><FontAwesomeIcon icon={faDoorOpen} size="3x"/></Button>
                             </Link>
                         </div>
                     </Card>
                 </div>
-                <Card>
+                {/* <Card>
                 <Link to={`/`} role="button">
                                 <Button>Logout</Button>
                             </Link>
-                </Card>
+                </Card> */}
             </Container>
         </div>
     );

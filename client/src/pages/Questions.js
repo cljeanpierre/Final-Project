@@ -9,7 +9,7 @@ import Container from "../components/Container";
 import Jumbotron from "../components/Jumbotron";
 import Row from "../components/Row";
 import Button from "../components/Button";
-import Col from "../components/Col";
+// import Col from "../components/Col";
 import Card from "../components/Card";
 
 let firstRun;
@@ -133,12 +133,15 @@ function Questions() {
                     <h1>Which country does this flag belong to?</h1>
                 </Jumbotron>
                 <Card>
-                    <Row>
-                        <Col>
-                            <img className="img-fluid align-middle" style={{ borderRadius: "0.5rem", marginBottom: "2em", maxHeight: "15em" }} src={state.flag} />
-                        </Col>
-                        <Col>
-                            <div className="card-body" style={{ paddingTop: "0" }}>
+                <div className="card-group">
+                
+                        <Card>
+                            <div className="card-body col d-flex align-items-center justify-content-center" style={{ backgroundColor: '#eee', borderRadius: '15px'}}>
+                            <img className="img-fluid" style={{ borderRadius: "0.5rem", maxHeight: '500px' }} src={state.flag} />
+                            </div>
+                        </Card>
+                        <Card>
+                            <div className="card-body" style={{ backgroundColor: '#eee', borderRadius: '15px'}}>
 
                                 <Button onClick={() => createQuestion(state.choice1)}>{state.choice1}</Button>
 
@@ -151,9 +154,8 @@ function Questions() {
                                 <Button onClick={() => createQuestion(state.choice5)}>{state.choice5}</Button>
 
                             </div>
-                        </Col>
-
-                    </Row>
+                        </Card>
+                    </div>
                 </Card>
             </Container>
         </div>
