@@ -7,7 +7,7 @@ function Container(props) {
             backgroundColor: '#e8eae6',
             textAlign: 'center',
             borderRadius: '15px',
-  
+            margin:props.margin
         }
     }
     return (
@@ -18,3 +18,4 @@ function Container(props) {
 }
 
 export default Radium(Container);
+

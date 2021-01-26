@@ -43,16 +43,17 @@ function Login() {
   };
 
   return (
-    <Container width="max-content" margin="0 auto">
-        <Div margin="2rem auto">
-          <FlagContainer>
+    
+    <Container width="auto" margin="0 auto">
+     
+          <FlagContainer  margin="0 auto">
             {" "}
             {Object.values(data.flags).map(flag => (
               <FlagImg margin="1rem" flag={flag} />
             ))}{" "}
           </FlagContainer>
 
-          <Div margin="2rem auto" alignItems="center">
+          <Div width="max-content" margin="2rem auto" >
             <Title name={data.title} />{" "}
             <Jumbotron margin="0rem auto" width="max-content">
               <InputBox
@@ -65,7 +66,7 @@ function Login() {
               />
             </Jumbotron>
 
-            <Div display="flex">
+            <Div margin="0 auto" >
               <Link to={`/home`} role="button">
                 <LoginBtn> Login </LoginBtn> 
               </Link>
@@ -77,15 +78,16 @@ function Login() {
               </Link>
             </Div>
           </Div>
-
-          <FlagContainer >
+          
+          <FlagContainer margin="0 auto" >
             {" "}
             {Object.keys(data.flags2).map(flag => (
               <FlagImg margin="1rem" flag={flag} />
             ))}{" "}
           </FlagContainer>
-        <Footer />
-        </Div>
+        <Footer padding="0rem 0rem .9rem 0rem" />
+
+       
        
     </Container>
    

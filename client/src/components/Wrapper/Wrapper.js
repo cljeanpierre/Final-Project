@@ -6,7 +6,8 @@ function Wrapper(props) {
         base: {
             background: 'grey',
             textAlign: 'center',
-            height: 'auto'
+            height: 'auto',
+            margin:"0"
         }
     }
     return <div className="wrapper" style={styles.base}>{props.children}</div>

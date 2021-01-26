@@ -3,7 +3,7 @@ import React from "react";
 function LoginDiv(props) {
   const style ={
     base:{
-      width: "max-content",
+      width: props.width,
       margin: props.margin,
       display: props.display,
       alignItems: props.alignItems,
