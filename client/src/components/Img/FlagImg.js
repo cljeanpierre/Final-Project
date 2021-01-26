@@ -2,31 +2,31 @@ import React from "react";
 import ReactCountryFlag from "react-country-flag"
 
 
-const FlagImg= (props)=> {
+const FlagImg = (props) => {
 
-  const styles ={
-    divBase:{
+  const styles = {
+    divBase: {
       margin: props.margin,
       width: "5.5rem",
       height: "max-content",
     },
-    imgBase:{
+    imgBase: {
       width: "100%",
       height: "100%",
-      border:".1rem solid transparent",
+      border: ".1rem solid transparent",
       boxShadow: ".6rem .6rem .6rem darkgrey",
-      borderRadius: "15px",
+      borderRadius: "0.9rem",
     }
   }
 
-    return (
-        <div style={styles.divBase}>
-            <ReactCountryFlag countryCode={props.flag}  svg style={styles.imgBase}
-            />     
-        </div>
-    )
+  return (
+    <div style={styles.divBase}>
+      <ReactCountryFlag countryCode={props.flag} svg style={styles.imgBase}
+      />
+    </div>
+  )
 }
- 
+
 export default FlagImg
 
 
