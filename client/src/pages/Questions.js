@@ -5,12 +5,12 @@ import { Link, useHistory } from "react-router-dom";
 // import { View } from "react-native";
 // import FlashMessage from "react-native-flash-message";
 
-import Container from "../components/Container";
-import Jumbotron from "../components/Jumbotron";
-import Row from "../components/Row";
-import Button from "../components/Button";
-// import Col from "../components/Col";
-import Card from "../components/Card";
+import Container from "../components/Questions-Page/Container/Container";
+import Jumbotron from "../components/Questions-Page/Jumbotron/Jumbotron";
+import Row from "../components/Questions-Page/Row/Row";
+import Button from "../components/Questions-Page/Button/Button";
+// import Col from "../components/Questions-Page/Col/Col";
+import Card from "../components/Questions-Page/Card/Card";
 
 let firstRun;
 

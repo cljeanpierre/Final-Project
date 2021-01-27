@@ -2,21 +2,18 @@ import React, { useState } from "react";
 import { useQuestionContext } from "../utils/GlobalState";
 import { Link, useHistory } from "react-router-dom";
 
-import InputBox from "../components/InputBox/inputBox";
-import FlagDiv from "../components/FlagDiv/FlagDiv";
-import LoginBtn from "../components/Button/SignUp_LoginBtns";
-import Div from "../components/Div/Div";
-import Footer from "../components/Footer/Footer";
-import Title from "../components/Title/Title";
-import Container from "../components/Container/index";
-import FlagImg from "../components/Img/FlagImg";
-import Jumbotron from "../components/Jumbotron/index";
-
+import InputBox from "../components/Login-Page/InputBox/inputBox";
+import FlagContainer from "../components/Login-Page/Flags/FlagContainer";
+import Btn from "../components/Login-Page/Button/Btn";
+import Div from "../components/Login-Page/Div/Div";
+import Footer from "../components/Login-Page/Footer/Footer";
+import Title from "../components/Login-Page/Title/Title";
+import Container from "../components/Login-Page/Container/Container";
+import FlagImg from "../components/Login-Page/Flags/FlagImg";
+import Jumbotron from "../components/Login-Page/Jumbotron/Jumbotron";
 
 import API from "../utils/API";
-
 function Login() {
-
   const history = useHistory();
 
   const [state, setState] = useState({
@@ -36,7 +33,6 @@ function Login() {
       "Aland Islands": "AX",
       Albania: "AL",
       Algeria: "DZ",
-      "American Samoa": "AS",
       Bahamas: "BS",
       "Palestinian Territory, Occupied": "PS",
       "United Arab Emirates": "AE",
@@ -56,12 +52,15 @@ function Login() {
     }
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = e => {
     e.preventDefault();
     API.loginAuth(state)
       .then(res => {
         console.log(res);
-        dispatch({type: "setUsername", name: JSON.parse(res.config.data).email});
+        dispatch({
+          type: "setUsername",
+          name: JSON.parse(res.config.data).email
+        });
         history.push("/home");
       })
       .catch(err => {
@@ -78,21 +77,17 @@ function Login() {
       ...state,
       [name]: value
     });
-  };
-
+  }
 
   return (
     <Container width="max-content" margin="0rem auto" padding="0rem 0rem .2rem">
-
-      <FlagDiv margin="0rem auto 2rem">
+      <FlagContainer margin="0rem auto 2rem">
         {" "}
         {Object.values(data.flags).map(flag => (
           <FlagImg margin="1rem" flag={flag} />
         ))}{" "}
-      </FlagDiv>
-
+      </FlagContainer>
       <Title name={data.title} />{" "}
-
       <Div margin="2rem auto" alignItems="center">
         <Jumbotron margin="0rem auto" width="max-content">
           <InputBox
@@ -109,27 +104,26 @@ function Login() {
           />
         </Jumbotron>
 
-        <Div display="flex">
-          <Link to={`/home`} role="button">
-            <LoginBtn onClick={handleLogin}> Login </LoginBtn>
+        <Div>
+          <Link to={`/home`} role="Btn">
+            <Btn onClick={handleLogin}> Login </Btn>
           </Link>
-          <Link to={`/signup`} role="button">
-            <LoginBtn> Sign Up </LoginBtn>{" "}
+          <Link to={`/signup`} role="Btn">
+            <Btn> Sign Up </Btn>{" "}
           </Link>
-          <Link to={`/scores`} role="button">
-            <LoginBtn> Highscores </LoginBtn>{" "}
+          <Link to={`/scores`} role="Btn">
+            <Btn> Highscores </Btn>{" "}
           </Link>
         </Div>
       </Div>
 
-      <FlagDiv margin="3rem auto 0rem">
+      <FlagContainer margin="0 auto">
         {" "}
         {Object.keys(data.flags2).map(flag => (
           <FlagImg margin="1rem" flag={flag} />
         ))}{" "}
-      </FlagDiv>
-
-      <Footer />
+      </FlagContainer>
+      <Footer padding="0rem 0rem .9rem 0rem" />
     </Container>
   );
 }

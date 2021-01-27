@@ -1,9 +1,9 @@
 import React from "react";
-import Container from "../components/Container";
+import Container from "../components/Scores-Page/Container/Container";
 // import Card from "../components/Card";
-import Jumbotron from "../components/Jumbotron";
-import List from "../components/List";
-import ListItem from "../components/ListItem";
+import Jumbotron from "../components/Scores-Page/Jumbotron/Jumbotron";
+import List from "../components/Scores-Page/List/List";
+import ListItem from "../components/Scores-Page/ListItem/ListItem";
 // import Row from "../components/Row";
 // import Button from "../components/Button";
 import Logo from "../quiz-logo.png";

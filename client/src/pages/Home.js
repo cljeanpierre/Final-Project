@@ -1,18 +1,18 @@
 import React from "react";
-import Container from "../components/Container";
-import Card from "../components/Card";
+import Container from "../components/Home-Page/Container/Container";
+import Card from "../components/Home-Page/Card/Card";
 // import Col from "../components/Col";
-import Jumbotron from "../components/Jumbotron";
+import Jumbotron from "../components/Home-Page/Jumbotron/Jumbotron";
 // import Row from "../components/Row";
-import Button from "../components/Button";
+// import Button from "../components/Home-Page/Button/Button";
 import { Link, useHistory } from "react-router-dom";
 import Logo from "../quiz-logo.png";
 
 import { useQuestionContext } from "../utils/GlobalState";
 
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDoorOpen, faPlayCircle, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faDoorOpen, faPlayCircle, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -37,7 +37,7 @@ function Home(props) {
                         </div>
                         <div className="card-body">
                         <Link to={`/questions`} role="button" className="btn btn-link">
-                                <Button><FontAwesomeIcon icon={faPlayCircle} size="3x"/></Button>
+                                {/* <Button><FontAwesomeIcon icon={faPlayCircle} size="3x"/></Button> */}
                             </Link>
                         </div>
                     </Card>
@@ -47,7 +47,7 @@ function Home(props) {
                         </div>
                         <div className="card-body">
                         <Link to={`/scores`} role="button" className="btn btn-link">
-                                <Button><FontAwesomeIcon icon={faStarHalfAlt} size="3x"/></Button>
+                                {/* <Button><FontAwesomeIcon icon={faStarHalfAlt} size="3x"/></Button> */}
                             </Link>
                         </div>
                     </Card>
@@ -57,7 +57,7 @@ function Home(props) {
                         </div>
                         <div className="card-body">
                         <Link to={`/scores`} role="button" className="btn btn-link">
-                                <Button><FontAwesomeIcon icon={faDoorOpen} size="3x"/></Button>
+                                {/* <Button><FontAwesomeIcon icon={faDoorOpen} size="3x"/></Button> */}
                             </Link>
                         </div>
                     </Card>
