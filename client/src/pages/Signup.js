@@ -6,7 +6,7 @@ import { useQuestionContext } from "../utils/GlobalState";
 
 import InputBox from "../components/SignUp-Page/InputBox/inputBox";
 import FlagContainer from "../components/SignUp-Page/Flags/FlagContainer";
-import Btn from "../components/SignUp-Page/Button/SignUp_LoginBtns";
+import Btn from "../components/SignUp-Page/Button/Button";
 import Div from "../components/SignUp-Page/Div/Div";
 import Footer from "../components/SignUp-Page/Footer/Footer";
 import Title from "../components/SignUp-Page/Title/Title";
@@ -61,7 +61,7 @@ function SignUp() {
     API.signUpAuth(state)
       .then(res => {
         dispatch({
-          type: "setUsername",
+          user: "setUsername",
           name: JSON.parse(res.config.data).username
         });
         history.push("/home");
@@ -82,15 +82,15 @@ function SignUp() {
 
   return (
     <Container width="max-content" margin="0rem auto" padding="0rem 0rem .2rem">
-    <FlagContainer margin="0rem auto 2rem">
+    <FlagContainer margin="0rem auto 1rem">
       {" "}
       {Object.values(data.flags).map(flag => (
-        <FlagImg margin="1rem" flag={flag} />
+        <FlagImg margin=".7rem" flag={flag} />
       ))}{" "}
     </FlagContainer>
     <Title name={data.title} />{" "}
-    <Div margin="2rem auto" alignItems="center">
-      <Jumbotron margin="0rem auto" width="max-content">
+    <Div margin="1rem auto" alignItems="center">
+      <Jumbotron margin="0rem auto .5rem" width="max-content">
       <InputBox
             value={state.username}
             padding=".5rem 2rem 0rem"
@@ -113,27 +113,25 @@ function SignUp() {
            name="retypedPassword"
            type="password"
         />
+      <Div margin="0 auto">
+          <Link to={`/login`} role="Btn">
+            <Btn> Back </Btn>
+          </Link>
+            <Btn margin="0 1.2rem"  onClick={handleSignup}> Sign Up </Btn>{" "}
+          <Link to={`/scores`} role="Btn">
+            <Btn> Scores </Btn>{" "}
+          </Link>
+        </Div>
       </Jumbotron>
-      <Div>
-        <Link to={`/`} role="Btn">
-          <Btn> Login </Btn>
-        </Link>
-        <Link to={`/home`} role="Btn">
-          <Btn onClick={handleSignup} > Sign Up </Btn>{" "}
-        </Link>
-        <Link to={`/scores`} role="Btn">
-          <Btn> Highscores </Btn>{" "}
-        </Link>
-      </Div>
     </Div>
 
     <FlagContainer margin="0 auto">
       {" "}
       {Object.keys(data.flags2).map(flag => (
-        <FlagImg margin="1rem" flag={flag} />
+        <FlagImg margin=".7rem" flag={flag} />
       ))}{" "}
     </FlagContainer>
-    <Footer padding="0rem 0rem .9rem 0rem" />
+    <Footer/>
   </Container>
   );
 }

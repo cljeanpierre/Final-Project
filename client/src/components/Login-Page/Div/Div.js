@@ -1,19 +1,20 @@
 import React from "react";
 
-function LoginDiv(props) {
+function Div(props) {
   const style ={
     base:{
       width: props.width,
       margin: props.margin,
       display: props.display,
       alignItems: props.alignItems,
+      "flex-wrap":"inherit"
     }
   }
   return (
-    <div style ={style.base}>
+    <div class="row"style ={style.base}>
         {props.children}
     </div>
   );
 }
 
-export default LoginDiv;
+export default Div;

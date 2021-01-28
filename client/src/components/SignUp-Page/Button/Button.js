@@ -1,5 +1,5 @@
 import React from "react";
-import Radium from "radium";
+import Radium from "radium"
 
 function Btn(props) {
   const style = {
@@ -20,10 +20,9 @@ function Btn(props) {
       }
     }
   };
-  return (
-    <button {...props} style={style.base}>
-      {props.children}
-    </button>
-  );
-}
-export default Radium(Btn);
+    return (
+          <button {...props} style={style.base}>{props.children}</button>
+    );
+  }
+
+  export default Radium(Btn);

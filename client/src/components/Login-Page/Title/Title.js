@@ -1,19 +1,16 @@
 import React from "react";
+import Logo from "../../../../src/quiz-logo.png"
 
 function Title(props) {
   const style ={
     base:{
-      width: "max-content",
-      margin: "auto auto 2rem",
-      textShadow: ".2rem .2rem .2rem goldenrod",
-      fontFamily: "Verdana, Geneva, Tahoma, sans-serif;",
-      color: props.color
+      width: "15.5rem",
+      margin: "0 auto",
     }
   }
   return (
-    <div style={style.base}>
-      <h1>{props.name}</h1>
-    </div>
+    <img src={Logo} style={style.base}/>
+   
   );
 }
 

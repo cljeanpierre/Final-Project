@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 
 import InputBox from "../components/Login-Page/InputBox/inputBox";
 import FlagContainer from "../components/Login-Page/Flags/FlagContainer";
-import Btn from "../components/Login-Page/Button/Btn";
+import Btn from "../components/Login-Page/Button/Button";
 import Div from "../components/Login-Page/Div/Div";
 import Footer from "../components/Login-Page/Footer/Footer";
 import Title from "../components/Login-Page/Title/Title";
@@ -37,7 +37,8 @@ function Login() {
       "Palestinian Territory, Occupied": "PS",
       "United Arab Emirates": "AE",
       "United Kingdom": "GB",
-      "United datas": "US"
+      "United states": "US",
+      "American Samoa": "AS"
     },
     flags2: {
       CZ: "Czechia",
@@ -81,15 +82,17 @@ function Login() {
 
   return (
     <Container width="max-content" margin="0rem auto" padding="0rem 0rem .2rem">
-      <FlagContainer margin="0rem auto 2rem">
+      <FlagContainer margin="0rem auto 2rem" >
         {" "}
+        <Div margin="0 auto">
         {Object.values(data.flags).map(flag => (
-          <FlagImg margin="1rem" flag={flag} />
+          <FlagImg margin=".7rem" flag={flag} />
         ))}{" "}
+        </Div>
       </FlagContainer>
-      <Title name={data.title} />{" "}
       <Div margin="2rem auto" alignItems="center">
         <Jumbotron margin="0rem auto" width="max-content">
+        <Title/>
           <InputBox
             onChange={HandleInputChange}
             name="email"
@@ -99,32 +102,34 @@ function Login() {
           <InputBox
             onChange={HandleInputChange}
             name="password"
-            padding="0rem 2rem .5rem"
+            padding="0rem 2rem"
             placeholder={data.placeholder.password}
             type="password"
           />
-        </Jumbotron>
-
-        <Div>
+        <Div margin="0 auto">
           <Link to={`/home`} role="Btn">
             <Btn onClick={handleLogin}> Login </Btn>
           </Link>
           <Link to={`/signup`} role="Btn">
-            <Btn> Sign Up </Btn>{" "}
+            <Btn margin="0 1.2rem"> Sign Up </Btn>{" "}
           </Link>
           <Link to={`/scores`} role="Btn">
-            <Btn> Highscores </Btn>{" "}
+            <Btn> Scores </Btn>{" "}
           </Link>
         </Div>
+        </Jumbotron>
+
       </Div>
 
       <FlagContainer margin="0 auto">
         {" "}
+        <Div margin="0 auto">
         {Object.keys(data.flags2).map(flag => (
-          <FlagImg margin="1rem" flag={flag} />
+          <FlagImg margin=".7rem" flag={flag} />
         ))}{" "}
+        </Div>
       </FlagContainer>
-      <Footer padding="0rem 0rem .9rem 0rem" />
+      <Footer/>
     </Container>
   );
 }
