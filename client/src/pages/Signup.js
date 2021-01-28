@@ -114,8 +114,8 @@ function SignUp() {
            type="password"
         />
       <Div margin="0 auto">
-          <Link to={`/home`} role="Btn">
-            <Btn> Login </Btn>
+          <Link to={`/login`} role="Btn">
+            <Btn> Back </Btn>
           </Link>
             <Btn margin="0 1.2rem"  onClick={handleSignup}> Sign Up </Btn>{" "}
           <Link to={`/scores`} role="Btn">
