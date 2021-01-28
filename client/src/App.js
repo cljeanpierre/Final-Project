@@ -6,7 +6,7 @@ import Scores from "./pages/Scores";
 import Wrapper from "./components/Wrapper";
 import Login from "./pages/Login";
 import Questions from "./pages/Questions";
-import SignUp from "./pages/Signup"
+ import SignUp from "./pages/signUp"
 import { QuestionProvider } from "./utils/GlobalState"
 
 function App() {
