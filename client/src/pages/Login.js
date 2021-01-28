@@ -101,6 +101,7 @@ function Login() {
             name="password"
             padding="0rem 2rem .5rem"
             placeholder={data.placeholder.password}
+            type="password"
           />
         </Jumbotron>
 
