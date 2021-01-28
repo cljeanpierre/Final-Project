@@ -104,6 +104,7 @@ function Login() {
             name="password"
             padding="0rem 2rem"
             placeholder={data.placeholder.password}
+            type="password"
           />
         <Div margin="0 auto">
           <Link to={`/home`} role="Btn">
