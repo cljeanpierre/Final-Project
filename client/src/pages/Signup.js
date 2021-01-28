@@ -84,9 +84,11 @@ function SignUp() {
     <Container width="max-content" margin="0rem auto" padding="0rem 0rem .2rem">
     <FlagContainer margin="0rem auto 1rem">
       {" "}
+      <Div margin="0 auto">
       {Object.values(data.flags).map(flag => (
         <FlagImg margin=".7rem" flag={flag} />
       ))}{" "}
+      </Div>
     </FlagContainer>
     <Title name={data.title} />{" "}
     <Div margin="1rem auto" alignItems="center">
@@ -127,9 +129,11 @@ function SignUp() {
 
     <FlagContainer margin="0 auto">
       {" "}
+      <Div margin="0 auto">
       {Object.keys(data.flags2).map(flag => (
         <FlagImg margin=".7rem" flag={flag} />
       ))}{" "}
+      </Div>
     </FlagContainer>
     <Footer/>
   </Container>
