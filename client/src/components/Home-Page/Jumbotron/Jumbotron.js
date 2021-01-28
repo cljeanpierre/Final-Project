@@ -17,7 +17,7 @@ function Jumbotron(props) {
             }    
         }
     }
-    return <div className="jumbotron" style={styles.base}>{props.children}</div>
+    return <div className="jumbotron-fluid" style={styles.base}>{props.children}</div>
 }
 
 export default Radium(Jumbotron);
