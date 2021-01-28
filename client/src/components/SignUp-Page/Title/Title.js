@@ -4,10 +4,7 @@ function Title(props) {
   const style ={
     base:{
       width: "max-content",
-      margin: "auto auto 2rem",
-      textShadow: ".2rem .2rem .2rem goldenrod",
-      fontFamily: "Verdana, Geneva, Tahoma, sans-serif;",
-      color: props.color
+      margin: "0 auto",
     }
   }
   return (

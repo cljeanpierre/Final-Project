@@ -1,26 +1,29 @@
 import React from "react";
 import Radium from "radium";
 
-function Button(props) {
-    const styles = {
-        base: {
-            padding: '15px',
-            borderRadius: '10px',
-            marginBottom: "0.5em",
-            background: 'lightyellow',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-            ':hover': {
-                background: 'white'
-            },
-            ':active': {
-                background: '#7c9473'
-            },
-            
-            
-        }
+function Btn(props) {
+  const style = {
+    base: {
+      background: "#cfdac8",
+      borderRadius: ".5rem",
+      margin: props.margin,
+      fontFamily: "Verdana, Geneva, Tahoma, sans-serif;",
+      fontSize: "1.2rem",
+      cursor: "pointer",
+      color: "black",
+      textShadow: "1px 1px 1px white",
+      ":hover": {
+        background: "lightyellow"
+      },
+      ":active": {
+        background: "lightblue"
+      }
     }
-    return <div className="button" {...props} style={styles.base}>{props.children}</div>
+  };
+  return (
+    <button {...props} style={style.base}>
+      {props.children}
+    </button>
+  );
 }
-
-export default Radium(Button);
+export default Radium(Btn);

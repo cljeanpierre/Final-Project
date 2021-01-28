@@ -1,18 +1,26 @@
 import React from "react";
+import Radium from "radium"
 
-export default function SignUpBtn(props) {
+function Btn(props) {
   const style ={
     base:{
       backgroundColor: "#cfdac8",
-      borderRadius: "7px",
-      margin: "1.5rem 1rem 0rem 1rem",
+      borderRadius: ".5rem",
+      margin: props.margin,
       fontFamily:"Verdana, Geneva, Tahoma, sans-serif;",
       fontSize:"1.2rem",
-      cursor:"pointer"
+      cursor:"pointer",
+      ':hover':{
+        background: "lightyellow",
+      },
+      ':active':{
+        background: "lightblue"
+      }
     }
   }
     return (
           <button {...props} style={style.base}>{props.children}</button>
     );
   }
-  
+
+  export default Radium(Btn);

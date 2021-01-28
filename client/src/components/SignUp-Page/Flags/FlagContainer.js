@@ -7,6 +7,8 @@ const styles = {
     display:"flex",
     backgroundColor:props.color,
     height:"max-content",
+    margin: props.margin,
+    position: props.position
     
   },
 }

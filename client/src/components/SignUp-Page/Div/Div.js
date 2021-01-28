@@ -1,12 +1,14 @@
 import React from "react";
 
-function LoginDiv(props) {
+function Div(props) {
   const style ={
     base:{
       width: "max-content",
-      margin: "0 auto",
+      margin: props.margin,
       display: props.display,
       alignItems: props.alignItems,
+      display:props.display,
+      "flex-wrap":"none"
     }
   }
   return (
@@ -16,4 +18,4 @@ function LoginDiv(props) {
   );
 }
 
-export default LoginDiv;
+export default Div;
