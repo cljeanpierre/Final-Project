@@ -19,7 +19,8 @@ function SignUp() {
 
   const [state, setState] = useState({
     username: "",
-    password: ""
+    password: "",
+    retypedPassword: ""
   });
 
   const [globalState, dispatch] = useQuestionContext();
@@ -75,8 +76,9 @@ function SignUp() {
     const { name, value } = event.target;
 
     // Updating the input's state
-    setState({ ...state, [name]: value });
-  }
+    setState({...state,
+      [name]: value});
+  };
 
   return (
     <Container width="max-content" margin="0rem auto" padding="0rem 0rem .2rem">
@@ -90,21 +92,26 @@ function SignUp() {
     <Div margin="2rem auto" alignItems="center">
       <Jumbotron margin="0rem auto" width="max-content">
       <InputBox
-          value={state.username}
-          padding=".5rem 2rem 0rem"
-          placeholder={data.placeholder.username}
-          onChange={HandleInputChange}
-          name="username"
+            value={state.username}
+            padding=".5rem 2rem 0rem"
+            placeholder={data.placeholder.username}
+            onChange={HandleInputChange}
+            name="username"
         />
         <InputBox
-          value={state.password}
-          placeholder={data.placeholder.password}
-          onChange={HandleInputChange}
-          name="password"
+            value={state.password}
+            placeholder={data.placeholder.password}
+            onChange={HandleInputChange}
+            name="password"
+            type="password"
         />
         <InputBox
-          padding="0rem 0rem .5rem 0rem"
-          placeholder={data.placeholder.reEnterPassword}
+           padding="0rem 0rem .5rem 0rem"
+           value={state.retypedPassword}
+           placeholder={data.placeholder.reEnterPassword}
+           onChange={HandleInputChange}
+           name="retypedPassword"
+           type="password"
         />
       </Jumbotron>
       <Div>
