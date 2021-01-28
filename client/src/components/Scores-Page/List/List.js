@@ -12,7 +12,7 @@ function List(props) {
         }
     }
   return (
-    <div className="list-overflow-container" style={styles.base}>
+    <div className="list-overflow-container m-2" style={styles.base}>
       <ol className="list-group" style={styles.base}>{props.children}</ol>
     </div>
   );

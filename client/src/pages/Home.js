@@ -4,15 +4,15 @@ import Card from "../components/Home-Page/Card/Card";
 // import Col from "../components/Col";
 import Jumbotron from "../components/Home-Page/Jumbotron/Jumbotron";
 // import Row from "../components/Row";
-// import Button from "../components/Home-Page/Button/Button";
+import Button from "../components/Home-Page/Button/Button";
 import { Link, useHistory } from "react-router-dom";
 import Logo from "../quiz-logo.png";
 
 import { useQuestionContext } from "../utils/GlobalState";
 
 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faDoorOpen, faPlayCircle, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDoorOpen, faPlayCircle, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -23,8 +23,8 @@ function Home(props) {
         history.push("/login");
     }
     return (
-        <div className="container-fluid main-bg overflow-auto">
-            <Container fluid>
+        <div className="container">
+            <Container>
                 <Jumbotron>
                     <img className="img-fluid" src={Logo} alt="logo"></img>
                     <h1>Welcome {globalState.userName}</h1>
@@ -36,8 +36,8 @@ function Home(props) {
                             <h1 className="card-title">Flag Quiz</h1>
                         </div>
                         <div className="card-body">
-                        <Link to={`/questions`} role="button" className="btn btn-link">
-                                {/* <Button><FontAwesomeIcon icon={faPlayCircle} size="3x"/></Button> */}
+                        <Link to={`/questions`} role="button" className="btn btn-link" style={{ color: 'inherit'}}>
+                                <Button><FontAwesomeIcon icon={faPlayCircle} size="3x"/></Button>
                             </Link>
                         </div>
                     </Card>
@@ -46,8 +46,8 @@ function Home(props) {
                             <h1 className="card-title">High Scores</h1>
                         </div>
                         <div className="card-body">
-                        <Link to={`/scores`} role="button" className="btn btn-link">
-                                {/* <Button><FontAwesomeIcon icon={faStarHalfAlt} size="3x"/></Button> */}
+                        <Link to={`/scores`} role="button" className="btn btn-link" style={{ color: 'inherit'}}>
+                                <Button><FontAwesomeIcon icon={faStarHalfAlt} size="3x"/></Button>
                             </Link>
                         </div>
                     </Card>
@@ -56,17 +56,12 @@ function Home(props) {
                             <h1 className="card-title">Logout</h1>
                         </div>
                         <div className="card-body">
-                        <Link to={`/scores`} role="button" className="btn btn-link">
-                                {/* <Button><FontAwesomeIcon icon={faDoorOpen} size="3x"/></Button> */}
+                        <Link to={`/scores`} role="button" className="btn btn-link" style={{ color: 'inherit'}}>
+                                <Button><FontAwesomeIcon icon={faDoorOpen} size="3x"/></Button>
                             </Link>
                         </div>
                     </Card>
                 </div>
-                {/* <Card>
-                <Link to={`/`} role="button">
-                                <Button>Logout</Button>
-                            </Link>
-                </Card> */}
             </Container>
         </div>
     );
