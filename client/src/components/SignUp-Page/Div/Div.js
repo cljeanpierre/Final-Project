@@ -8,11 +8,13 @@ function Div(props) {
       display: props.display,
       alignItems: props.alignItems,
       display:props.display,
+      position:props.position,
+      "z-index": props.zIndex,
       "flex-wrap":"none"
     }
   }
   return (
-    <div style ={style.base}>
+    <div class= {props.col} style ={style.base}>
         {props.children}
     </div>
   );

@@ -8,7 +8,8 @@ const styles = {
     backgroundColor:props.color,
     height:"max-content",
     margin: props.margin,
-    position: props.position
+    position: props.position,
+    "z-index": props.zIndex
     
   },
 }
