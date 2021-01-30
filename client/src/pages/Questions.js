@@ -175,23 +175,23 @@ function Questions() {
                     <Jumbotron>
                         <img className="img-fluid mb-4" src={Logo} alt="logo"></img>
                         <br />
-                        <h1 className="display-3">Game Over!</h1>
+                        <h1>Game Over!</h1>
                         <br />
                         <h2>Your Final Score: {state.userScore}</h2>
                     </Jumbotron>
                     <Row>
                     <Col>
-                        <Link to={`/questions`} role="button" className="btn btn-link">
+                        <Link to={`/questions`} role="button" className="btn btn-link" style={{ color: 'inherit'}}>
                             <Button><FontAwesomeIcon icon={faPlayCircle} size="3x" /> Play Again</Button>
                         </Link>
                         </Col>
                         <Col>
-                        <Link to={`/scores`} role="button" className="btn btn-link">
+                        <Link to={`/scores`} role="button" className="btn btn-link" style={{ color: 'inherit'}}>
                             <Button><FontAwesomeIcon icon={faStarHalfAlt} size="3x" /> High Scores</Button>
                         </Link>
                         </Col>
                         <Col>
-                        <Link to={`/login`} role="button" className="btn btn-link">
+                        <Link to={`/login`} role="button" className="btn btn-link" style={{ color: 'inherit'}}>
                             <Button><FontAwesomeIcon icon={faDoorOpen} size="3x" /> Logout</Button>
                         </Link>
                         </Col>

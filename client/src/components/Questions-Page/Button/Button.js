@@ -4,8 +4,8 @@ import Radium from "radium";
 function Button(props) {
     const styles = {
         base: {
-            padding: '15px',
-            borderRadius: '10px',
+            padding: '1rem',
+            borderRadius: '0.6rem',
             marginBottom: "0.5em",
             background: 'lightyellow',
             fontWeight: 'bold',
@@ -16,7 +16,11 @@ function Button(props) {
             ':active': {
                 background: '#7c9473'
             },
-            
+            '@media (max-width:480px)': {
+                  display: 'block',
+                  margin: '5px',
+                  width: '100%'
+            }
             
         }
     }
