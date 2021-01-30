@@ -28,7 +28,7 @@ router.post("/scores", (req, res)=> {
   Game.create({
     user: req.body.id,
     score: req.body.score,
-    userName: "Taleh"
+    userName: req.body.name
   })
     .then((data)=> {
       res.json(data);

@@ -67,12 +67,12 @@ function reducer(state, action) {
       return {
         ...state,
         loading: false,
-        gameOver: false,
         questionCount: 0,
         userScore: 0,
         timeLeft: 60,
         firstRun: true,
       };
+
 
     case "updateTime":
       return {
