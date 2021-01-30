@@ -16,7 +16,7 @@ function Btn(props) {
         background: "lightyellow"
       },
       ":active": {
-        background: "lightblue"
+        background: "lightgreen"
       }
     }
   };

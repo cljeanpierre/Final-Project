@@ -9,8 +9,6 @@ const styles = {
     height:"max-content",
     margin: props.margin,
     position: props.position,
-    "z-index": props.zIndex
-    
   },
 }
 

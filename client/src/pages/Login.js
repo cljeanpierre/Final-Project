@@ -82,16 +82,17 @@ function Login() {
 
   return (
     <Container width="max-content" margin="0rem auto" padding="0rem 0rem .2rem">
-      <FlagContainer margin="0rem auto 2rem" >
+      <Div class="row">
+      <FlagContainer>
         {" "}
-        <Div margin="0 auto">
+        <Div margin="0 auto" class="row">
         {Object.values(data.flags).map(flag => (
           <FlagImg margin=".7rem" flag={flag} />
         ))}{" "}
         </Div>
       </FlagContainer>
       <Div margin="2rem auto" alignItems="center">
-        <Jumbotron margin="0rem auto" width="max-content">
+        <Jumbotron margin="2rem auto" width="max-content">
         <Title/>
           <InputBox
             onChange={HandleInputChange}
@@ -121,15 +122,16 @@ function Login() {
 
       </Div>
 
-      <FlagContainer margin="0 auto">
+      <FlagContainer>
         {" "}
-        <Div margin="0 auto">
+        <Div margin="0 auto" class="row">
         {Object.keys(data.flags2).map(flag => (
           <FlagImg margin=".7rem" flag={flag} />
         ))}{" "}
         </Div>
       </FlagContainer>
       <Footer/>
+      </Div>
     </Container>
   );
 }

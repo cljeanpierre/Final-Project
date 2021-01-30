@@ -4,14 +4,15 @@ function Div(props) {
   const style ={
     base:{
       width: props.width,
-      margin: props.margin,
+      margin: "auto",
       display: props.display,
       alignItems: props.alignItems,
-      "flex-wrap":"inherit"
+      "flex-wrap":"no-wrap",
+      height:props.height
     }
   }
   return (
-    <div class="row"style ={style.base}>
+    <div class={props.class} style ={style.base}>
         {props.children}
     </div>
   );

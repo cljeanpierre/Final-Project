@@ -9,8 +9,6 @@ function Div(props) {
       alignItems: props.alignItems,
       display:props.display,
       position:props.position,
-      "z-index": props.zIndex,
-      "flex-wrap":"none"
     }
   }
   return (
