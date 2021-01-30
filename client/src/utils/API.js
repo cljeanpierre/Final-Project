@@ -14,6 +14,15 @@ export default {
   //   return axios.delete("/api/posts/" + id);
   // },
   // // Saves a post to the database
+  
+  setScore: function(userData) {
+    return axios.post("/api/auth/scores", userData);
+  },
+
+  getScores: function(userData) {
+    return axios.get("/api/auth/scores");
+  },
+
   loginAuth: function(userData) {
     return axios.post("/api/auth/login", userData);
   },

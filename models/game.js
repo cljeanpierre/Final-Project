@@ -6,18 +6,14 @@ const gameSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",
-        unique: true,
+        unique: false,
         required: true
     },
     score: {
         type: Number,
         unique: false,
         required: true
-    },
-    // createdAt: {
-    //     type: Date,
-    //     default: Date.now()
-    // }
+    }
 });
 
 const Game = mongoose.model("Game", gameSchema);
