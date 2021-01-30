@@ -81,7 +81,7 @@ function SignUp() {
 
   return (
     <Container width="max-content" margin="0rem auto" padding="0rem 0rem .2rem">
-      <Div class="row">
+      <Div class="row" margin="0 auto">
         <FlagContainer>
           {" "}
           <Div margin="0 auto" class="row">
