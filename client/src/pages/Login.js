@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useQuestionContext } from "../utils/GlobalState";
 import { Link, useHistory } from "react-router-dom";
+import { useForm } from 'react-hook-form';
 
-import InputBox from "../components/Login-Page/InputBox/inputBox";
+// import InputBox from "../components/Login-Page/InputBox/inputBox";
 import FlagContainer from "../components/Login-Page/Flags/FlagContainer";
 import Btn from "../components/Login-Page/Button/Button";
 import Div from "../components/Login-Page/Div/Div";
@@ -53,23 +54,43 @@ function Login() {
     }
   };
 
-  const handleLogin = e => {
-    e.preventDefault();
-    API.loginAuth(state)
-      .then(res => {
-        console.log(res);
-        console.log(res.data.id);
-        dispatch({
-          type: "setUsername",
-          name: JSON.parse(res.config.data).email,
-          id: res.data.id
-        });
-        history.push("/home");
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
+  const { register, handleSubmit, errors } = useForm(); // initialize the hook
+    const onSubmit = data => {
+        console.log(data);
+        // e.preventDefault();
+        API.loginAuth(state)
+            .then(res => {
+                console.log(res);
+                console.log(res.data.id);
+                dispatch({
+                    type: "setUsername",
+                    name: JSON.parse(res.config.data).email,
+                    id: res.data.id
+                });
+                history.push("/home");
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    };
+
+//   const handleLogin = e => {
+//     e.preventDefault();
+//     API.loginAuth(state)
+//       .then(res => {
+//         console.log(res);
+//         console.log(res.data.id);
+//         dispatch({
+//           type: "setUsername",
+//           name: JSON.parse(res.config.data).email,
+//           id: res.data.id
+//         });
+//         history.push("/home");
+//       })
+//       .catch(err => {
+//         console.log(err);
+//       });
+//   };
 
   function HandleInputChange(event) {
     // Getting the value and name of the input which triggered the change
@@ -96,30 +117,35 @@ function Login() {
       <Div margin="2rem auto" alignItems="center">
         <Jumbotron margin="2rem auto" width="max-content">
         <Title/>
-          <InputBox
-            onChange={HandleInputChange}
-            name="email"
-            padding=".5rem 2rem 0rem"
-            placeholder={data.placeholder.username}
-          />{" "}
-          <InputBox
-            onChange={HandleInputChange}
-            name="password"
-            padding="0rem 2rem"
-            placeholder={data.placeholder.password}
-            type="password"
-          />
-        <Div margin="0 auto">
-          <Link to={`/home`} role="Btn">
-            <Btn onClick={handleLogin}> Login </Btn>
-          </Link>
-          <Link to={`/signup`} role="Btn">
-            <Btn margin="0 1.2rem"> Sign Up </Btn>{" "}
-          </Link>
-          <Link to={`/scores`} role="Btn">
-            <Btn> Scores </Btn>{" "}
-          </Link>
-        </Div>
+        <form className="pt-2" onSubmit={handleSubmit(onSubmit)} method="post">
+                        <div className="mb-4">
+                            <input
+                                onChange={HandleInputChange}
+                                name="email"
+                                padding=".5rem 2rem 0rem"
+                                placeholder={data.placeholder.username}
+                                ref={register({ required: true })} /> {/* register an input */}
+                            <div>
+                                {errors.email && 'Username is required.'}</div>
+                        </div>
+                        <div className="mb-4">
+                            <input
+                                onChange={HandleInputChange}
+                                name="password"
+                                padding="0rem 2rem"
+                                placeholder={data.placeholder.password}
+                                type="password"
+                                ref={register({ required: true })} />
+                            <div>
+                                {errors.password && 'Password is required.'}</div>
+                        </div>
+                        <div className="btn-group">
+
+                            <Btn type="submit">Login</Btn>
+                            <Link to={`/signup`} role="Btn"><Btn margin="0 1.2rem" type="button">Signup</Btn></Link>
+                            <Link to={`/scores`} role="Btn"><Btn type="button">Scores</Btn></Link>
+                        </div>
+                    </form>
         </Jumbotron>
 
       </Div>
@@ -139,3 +165,7 @@ function Login() {
 }
 
 export default Login;
+
+
+
+
