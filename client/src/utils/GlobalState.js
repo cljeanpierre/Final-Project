@@ -20,6 +20,7 @@ const QuestionContext = createContext({
   userId: "",
   firstRun: true,
   scores: [],
+  playAgain: true
 });
 
 const { Provider } = QuestionContext;
@@ -124,6 +125,7 @@ function QuestionProvider({ value = [], ...props }) {
     userId: "",
     firstRun: true,
     scores: [],
+    playAgain: true
   });
 
   return <Provider value={[state, dispatch]} {...props} />;
