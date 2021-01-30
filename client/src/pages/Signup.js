@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
+import { useForm } from 'react-hook-form';
 
 import API from "../utils/API";
 import { useQuestionContext } from "../utils/GlobalState";
 
-import InputBox from "../components/SignUp-Page/InputBox/inputBox";
+// import InputBox from "../components/SignUp-Page/InputBox/inputBox";
 import FlagContainer from "../components/SignUp-Page/Flags/FlagContainer";
 import Btn from "../components/SignUp-Page/Button/Button";
 import Div from "../components/SignUp-Page/Div/Div";
@@ -56,8 +57,10 @@ function SignUp() {
     }
   };
 
-  const handleSignup = e => {
-    e.preventDefault();
+  const { register, handleSubmit, errors } = useForm(); // initialize the hook
+  const onSubmit = data => {
+    console.log(data);
+    // e.preventDefault();
     API.signUpAuth(state)
       .then(res => {
         dispatch({
@@ -70,6 +73,21 @@ function SignUp() {
         console.log(err);
       });
   };
+
+  // const handleSignup = e => {
+  //   e.preventDefault();
+  //   API.signUpAuth(state)
+  //     .then(res => {
+  //       dispatch({
+  //         user: "setUsername",
+  //         name: JSON.parse(res.config.data).username
+  //       });
+  //       history.push("/home");
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // };
 
   function HandleInputChange(event) {
     // Getting the value and name of the input which triggered the change
@@ -93,38 +111,48 @@ function SignUp() {
         <Div margin="1rem auto" alignItems="center">
           <Title name={data.title} />{" "}
           <Jumbotron margin="1rem auto" width="max-content">
-            <InputBox
-              value={state.username}
-              placeholder={data.placeholder.username}
-              onChange={HandleInputChange}
-              name="username"
-            />
-            <InputBox
-              value={state.password}
-              placeholder={data.placeholder.password}
-              onChange={HandleInputChange}
-              name="password"
-              type="password"
-            />
-            <InputBox
-              value={state.retypedPassword}
-              placeholder={data.placeholder.reEnterPassword}
-              onChange={HandleInputChange}
-              name="retypedPassword"
-              type="password"
-            />
-            <Div margin="0 auto">
-              <Link to={`/login`} role="Btn">
-                <Btn> Back </Btn>
-              </Link>
-              <Btn margin="0 1.2rem" onClick={handleSignup}>
-                {" "}
-                Sign Up{" "}
-              </Btn>{" "}
-              <Link to={`/scores`} role="Btn">
-                <Btn> Scores </Btn>{" "}
-              </Link>
-            </Div>
+          <form className="p-2" onSubmit={handleSubmit(onSubmit)} method="post">
+            <div className="mb-4">
+              <input
+                value={state.username}
+                placeholder={data.placeholder.username}
+                onChange={HandleInputChange}
+                name="username"
+                ref={register({ required: true })} /> {/* register an input */}
+              <div>
+                {errors.username && 'Username is required.'}</div>
+            </div>
+            <div className="mb-4">
+              <input
+                value={state.password}
+                placeholder={data.placeholder.password}
+                onChange={HandleInputChange}
+                name="password"
+                type="password"
+                ref={register({ required: true })} />
+              <div>
+                {errors.password && 'Password is required.'}</div>
+            </div>
+            <div className="mb-4">
+              <input
+                padding="0rem 0rem .5rem 0rem"
+                value={state.retypedPassword}
+                placeholder={data.placeholder.reEnterPassword}
+                onChange={HandleInputChange}
+                name="retypedPassword"
+                type="password"
+                ref={register({ required: true })} />
+              <div>
+                {errors.password && 'Password confirmation required.'}</div>
+            </div>
+            <div className="btn-group">
+
+              <Link to={`/login`} role="Btn"><Btn type="button">Back</Btn></Link>
+              <Btn margin="0 1.2rem" type="submit">Sign Up</Btn>
+              {/* <Link to={`/signup`} role="Btn"><Btn type="button">Signup</Btn></Link> */}
+              <Link to={`/scores`} role="Btn"><Btn type="button">Scores</Btn></Link>
+            </div>
+          </form> 
           </Jumbotron>
         </Div>
 
@@ -143,3 +171,8 @@ function SignUp() {
 }
 
 export default SignUp;
+
+
+
+
+
