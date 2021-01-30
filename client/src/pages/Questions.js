@@ -132,7 +132,8 @@ function Questions() {
         duplicateCall = true;
         API.setScore({
             id: state.userId,
-            score: state.userScore
+            score: state.userScore,
+            name: state.userName
         })
             .then(res => {
                 console.log("Succesfully wrote to db");
@@ -155,7 +156,7 @@ function Questions() {
 
 
 
-    if (!state.gameOver) {
+    if (!state.gameOver ) {
 
         return (
             <div className="container-fluid main-bg">
@@ -232,7 +233,7 @@ function Questions() {
                 </Container>
             </div>
         );
-    } 
+    }
 }
 
 export default Questions;
