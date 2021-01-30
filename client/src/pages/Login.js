@@ -21,7 +21,7 @@ function Login() {
     password: ""
   });
 
-  const [globalState, dispatch] = useQuestionContext();
+  const [ globalState, dispatch] = useQuestionContext();
 
   const data = {
     placeholder: {
@@ -58,9 +58,11 @@ function Login() {
     API.loginAuth(state)
       .then(res => {
         console.log(res);
+        console.log(res.data.id);
         dispatch({
           type: "setUsername",
-          name: JSON.parse(res.config.data).email
+          name: JSON.parse(res.config.data).email,
+          id: res.data.id
         });
         history.push("/home");
       })

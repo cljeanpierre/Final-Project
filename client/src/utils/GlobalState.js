@@ -13,10 +13,14 @@ const QuestionContext = createContext({
   citiesArray: [],
   userScore: 0,
   questionCount: 0,
-  timeLeft: 300,
+  timeLeft: 60,
   gameOver: false,
   userName: "",
-  isAuthenticated: false
+  isAuthenticated: false,
+  userId: "",
+  firstRun: true,
+  scores: [],
+  playAgain: true
 });
 
 const { Provider } = QuestionContext;
@@ -28,7 +32,8 @@ function reducer(state, action) {
       return {
         ...state,
         loading: false,
-        citiesArray: action.citiesArray
+        citiesArray: action.citiesArray,
+        firstRun: false
       };
 
     case "setQuestion":
@@ -52,6 +57,23 @@ function reducer(state, action) {
         loading: true
       };
 
+    case "logOut":
+      return {
+        ...state,
+        isAuthenticated: false
+      };
+
+    case "playAgain":
+      return {
+        ...state,
+        loading: false,
+        gameOver: false,
+        questionCount: 0,
+        userScore: 0,
+        timeLeft: 60,
+        firstRun: true,
+      };
+
     case "updateTime":
       return {
         ...state,
@@ -62,17 +84,21 @@ function reducer(state, action) {
         ...state,
         gameOver: true
       };
-    // case "userAuthenticated":
-    //   return {
-    //     ...state,
-    //     isAuthenticated: true
-    //   };
     case "setUsername":
       return {
         ...state,
         userName: action.name,
-        isAuthenticated: true
+        isAuthenticated: true,
+        userId: action.id
       };
+
+    case "loadScores":
+      return {
+        ...state,
+        scores: action.scores,
+        loading: false,
+      };
+
     default:
       return state;
   }
@@ -92,10 +118,14 @@ function QuestionProvider({ value = [], ...props }) {
     lastAnswer: "",
     userScore: 0,
     questionCount: 0,
-    timeLeft: 300,
+    timeLeft: 60,
     gameOver: false,
     userName: "",
-    isAuthenticated: false
+    isAuthenticated: false,
+    userId: "",
+    firstRun: true,
+    scores: [],
+    playAgain: true
   });
 
   return <Provider value={[state, dispatch]} {...props} />;
