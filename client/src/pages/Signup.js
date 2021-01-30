@@ -118,7 +118,8 @@ function SignUp() {
           <Link to={`/login`} role="Btn">
             <Btn> Back </Btn>
           </Link>
-            <Btn margin="0 .8rem"  onClick={handleSignup}> Sign Up </Btn>{" "}
+          
+            <Btn margin="0 1.2rem"  onClick={handleSignup}> Sign Up </Btn>{" "}
           <Link to={`/scores`} role="Btn">
             <Btn> Scores </Btn>{" "}
           </Link>

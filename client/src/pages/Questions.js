@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { useQuestionContext } from "../utils/GlobalState";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-// import { View } from "react-native";
-// import FlashMessage from "react-native-flash-message";
 
 import Container from "../components/Questions-Page/Container/Container";
 import Jumbotron from "../components/Questions-Page/Jumbotron/Jumbotron";
@@ -12,13 +10,15 @@ import Button from "../components/Questions-Page/Button/Button";
 import Col from "../components/Questions-Page/Col/Col";
 import Card from "../components/Questions-Page/Card/Card";
 
-import Logo from "../quiz-logo.png";
 
+import Logo from "../quiz-logo.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDoorOpen, faPlayCircle, faStarHalfAlt } from '@fortawesome/free-solid-svg-icons';
 
+import API from "../utils/API";
 
 let firstRun;
+let duplicateCall;
 
 function Questions() {
 
@@ -29,7 +29,7 @@ function Questions() {
         history.push("/login");
     }
 
-
+    // Make sure the hour and the seconds have "0" in front of them when they are single digit
     const addZero = (time) => {
         if (time < 10) {
             return "0" + time;
@@ -38,6 +38,7 @@ function Questions() {
         }
     }
 
+    // Parse seconds into minutes and seconds
     const formatTime = (time) => {
         const minutes = Math.floor(time / 60);
         const seconds = time % 60;
@@ -45,7 +46,7 @@ function Questions() {
     }
     //Make API call to get array of countries with all of their information
     useEffect(() => {
-        firstRun = true;
+        firstRun = state.firstRun;
         axios.get("https://restcountries.eu/rest/v2/all")
             .then(res => {
                 dispatch({ type: "loadCities", citiesArray: res.data });
@@ -57,14 +58,15 @@ function Questions() {
     useEffect(() => {
         let timeLeft = state.timeLeft;
         if (firstRun && !state.loading) {
-            createQuestion();
             firstRun = false;
+            createQuestion();
+            duplicateCall = false;
         }
-        const quizTimeout = setTimeout(() => {
+     const quizTimeout = setTimeout(() => {
             timeLeft = state.timeLeft - 1;
             if (timeLeft < 0) {
-                dispatch({ type: "gameOver" })
-
+                clearTimeout(quizTimeout);
+                dispatch({ type: "gameOver" })               
             } else {
                 dispatch({ type: "updateTime", timeLeft: timeLeft });
             }
@@ -91,7 +93,7 @@ function Questions() {
             // setTimeout()
         } else {
             if (state.questionCount !== 0) {
-                newScore = state.userScore - 1;
+                newScore = state.userScore - 2;
             }
         }
 
@@ -113,7 +115,7 @@ function Questions() {
                     incorrectChoiceCount++;
                 }
             }
-            state.loading = true;
+            // state.loading = true;
             countryChoices.push(correctChoice);
             console.log(flagImg);
             dispatch({ type: "setQuestion", correctChoice: correctChoice, countryChoices: randomizeOrder(countryChoices), flag: flagImg, questionCount: state.questionCount, userScore: newScore });
@@ -121,7 +123,39 @@ function Questions() {
         }
     };
 
-    if (!state.gameOver) {
+    const playAgain = (event) => {
+        event.preventDefault();
+        dispatch({ type: "playAgain" });
+    }
+
+    if (state.gameOver && !duplicateCall) {
+        duplicateCall = true;
+        API.setScore({
+            id: state.userId,
+            score: state.userScore
+        })
+            .then(res => {
+                console.log("Succesfully wrote to db");
+                console.log(res);
+                API.getScores()
+                    .then(data => {
+                        console.log("object");
+                        console.log(data);
+                        state.loading = true;
+                        dispatch({ type: "loadScores", scores: data });
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
+
+
+    if (!state.gameOver ) {
 
         return (
             <div className="container-fluid main-bg">
@@ -175,25 +209,23 @@ function Questions() {
                     <Jumbotron>
                         <img className="img-fluid mb-4" src={Logo} alt="logo"></img>
                         <br />
-                        <h1>Game Over!</h1>
+                        <h1 className="display-3">Game Over!</h1>
                         <br />
                         <h2>Your Final Score: {state.userScore}</h2>
                     </Jumbotron>
                     <Row>
-                    <Col>
-                        <Link to={`/questions`} role="button" className="btn btn-link" style={{ color: 'inherit'}}>
-                            <Button><FontAwesomeIcon icon={faPlayCircle} size="3x" /> Play Again</Button>
-                        </Link>
+                        <Col>
+                            <Button onClick={playAgain}><FontAwesomeIcon icon={faPlayCircle} size="3x" /> Play Again</Button>
                         </Col>
                         <Col>
-                        <Link to={`/scores`} role="button" className="btn btn-link" style={{ color: 'inherit'}}>
-                            <Button><FontAwesomeIcon icon={faStarHalfAlt} size="3x" /> High Scores</Button>
-                        </Link>
+                            <Link to={`/scores`} role="button" className="btn btn-link">
+                                <Button><FontAwesomeIcon icon={faStarHalfAlt} size="3x" /> High Scores</Button>
+                            </Link>
                         </Col>
                         <Col>
-                        <Link to={`/login`} role="button" className="btn btn-link" style={{ color: 'inherit'}}>
-                            <Button><FontAwesomeIcon icon={faDoorOpen} size="3x" /> Logout</Button>
-                        </Link>
+                            <Link to={`/login`} role="button" className="btn btn-link">
+                                <Button><FontAwesomeIcon icon={faDoorOpen} size="3x" /> Logout</Button>
+                            </Link>
                         </Col>
                     </Row>
 
