@@ -51,7 +51,7 @@ if (!globalState.loading) {
                     {globalState.scores.data.map(score => (
                         <ListItem key={score._id}>
                                 
-                                    {score.user} <strong> ( {score.score} ) points
+                                    {score.userName} <strong> ( {score.score} ) points
                                 </strong>
                         </ListItem>
                     ))}

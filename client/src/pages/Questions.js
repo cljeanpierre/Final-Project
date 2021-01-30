@@ -155,7 +155,7 @@ function Questions() {
 
 
 
-    if (!state.gameOver ) {
+    if (!state.gameOver) {
 
         return (
             <div className="container-fluid main-bg">
@@ -232,7 +232,7 @@ function Questions() {
                 </Container>
             </div>
         );
-    }
+    } 
 }
 
 export default Questions;

@@ -9,6 +9,12 @@ const gameSchema = new Schema({
         unique: false,
         required: true
     },
+    userName: {
+        type: String,
+        unique: false,
+        required: true
+
+    },
     score: {
         type: Number,
         unique: false,
