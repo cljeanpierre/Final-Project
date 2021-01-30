@@ -3,12 +3,13 @@ import React from "react";
 function FlagContainer(props) {
 const styles = {
   base:{
-    width: "max-content",
+    width: "100%",
     display:"flex",
     backgroundColor:props.color,
     height:"max-content",
     margin: props.margin,
-    position: props.position
+    position: props.position,
+    "z-index": props.zIndex
     
   },
 }

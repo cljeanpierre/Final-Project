@@ -84,16 +84,18 @@ function SignUp() {
     <Container width="max-content" margin="0rem auto" padding="0rem 0rem .2rem">
     <FlagContainer margin="0rem auto 1rem">
       {" "}
+      <Div display="flex" margin="0 auto">
       {Object.values(data.flags).map(flag => (
-        <FlagImg margin=".7rem" flag={flag} />
+        <FlagImg margin=".8rem" flag={flag} />
       ))}{" "}
+      </Div>
+      
     </FlagContainer>
     <Title name={data.title} />{" "}
     <Div margin="1rem auto" alignItems="center">
       <Jumbotron margin="0rem auto .5rem" width="max-content">
       <InputBox
             value={state.username}
-            padding=".5rem 2rem 0rem"
             placeholder={data.placeholder.username}
             onChange={HandleInputChange}
             name="username"
@@ -106,18 +108,17 @@ function SignUp() {
             type="password"
         />
         <InputBox
-           padding="0rem 0rem .5rem 0rem"
            value={state.retypedPassword}
            placeholder={data.placeholder.reEnterPassword}
            onChange={HandleInputChange}
            name="retypedPassword"
            type="password"
         />
-      <Div margin="0 auto">
+      <Div col="row" margin="0 auto">
           <Link to={`/login`} role="Btn">
             <Btn> Back </Btn>
           </Link>
-            <Btn margin="0 1.2rem"  onClick={handleSignup}> Sign Up </Btn>{" "}
+            <Btn margin="0 .8rem"  onClick={handleSignup}> Sign Up </Btn>{" "}
           <Link to={`/scores`} role="Btn">
             <Btn> Scores </Btn>{" "}
           </Link>
@@ -127,9 +128,11 @@ function SignUp() {
 
     <FlagContainer margin="0 auto">
       {" "}
+      <Div display="flex" margin="0 auto">
       {Object.keys(data.flags2).map(flag => (
-        <FlagImg margin=".7rem" flag={flag} />
+        <FlagImg margin=".8rem" flag={flag} />
       ))}{" "}
+      </Div>
     </FlagContainer>
     <Footer/>
   </Container>
