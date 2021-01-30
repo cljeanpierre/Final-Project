@@ -4,7 +4,7 @@ import Radium from "radium"
 function Btn(props) {
   const style ={
     base:{
-      backgroundColor: "#cfdac8",
+      background:"#cfdac8",
       borderRadius: ".5rem",
       margin: props.margin,
       fontFamily:"Verdana, Geneva, Tahoma, sans-serif;",
@@ -13,9 +13,10 @@ function Btn(props) {
       
       ':hover':{
         background: "lightyellow",
+        textDecoration: "underline solid black"
       },
       ':active':{
-        background: "lightblue"
+        background: "lightgreen"
       }
     }
   }

@@ -5,11 +5,8 @@ const styles = {
   base:{
     width: "100%",
     display:"flex",
-    backgroundColor:props.color,
-    height:"max-content",
-    margin: props.margin,
-    position: props.position,
-    "z-index": props.zIndex
+    margin: "0 auto",
+    padding: props.padding,
     
   },
 }

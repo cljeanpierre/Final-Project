@@ -1,18 +1,20 @@
 import React from "react";
 import Radium, { StyleRoot } from "radium";
+import Compass from "../../../compass.jpg"
 
 function Container(props) {
     const styles = {
         base: {
             width:"100%",
             backgroundColor: '#e8eae6',
+            backgroundImage: `url(${Compass})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
             textAlign: 'center',
-            borderRadius: '15px',
             margin:props.margin,
-            position: "fixed",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)"
+            height: "100vh!important",
+            display: "flex",
+            height:"100vh"
         }
     }
     return (

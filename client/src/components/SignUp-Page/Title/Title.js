@@ -5,6 +5,7 @@ function Title(props) {
     base:{
       width: "max-content",
       margin: "0 auto",
+      height:"max-content"
     }
   }
   return (
