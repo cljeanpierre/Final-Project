@@ -11,7 +11,6 @@ function Container(props) {
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             textAlign: 'center',
-            borderRadius: '15px',
             margin:props.margin,
             height: "100vh!important",
             display: "flex",

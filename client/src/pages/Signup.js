@@ -76,67 +76,69 @@ function SignUp() {
     const { name, value } = event.target;
 
     // Updating the input's state
-    setState({...state,
-      [name]: value});
-  };
+    setState({ ...state, [name]: value });
+  }
 
   return (
     <Container width="max-content" margin="0rem auto" padding="0rem 0rem .2rem">
-    <FlagContainer margin="0rem auto 1rem">
-      {" "}
-      <Div display="flex" margin="0 auto">
-      {Object.values(data.flags).map(flag => (
-        <FlagImg margin=".8rem" flag={flag} />
-      ))}{" "}
-      </Div>
-      
-    </FlagContainer>
-    <Title name={data.title} />{" "}
-    <Div margin="1rem auto" alignItems="center">
-      <Jumbotron margin="0rem auto .5rem" width="max-content">
-      <InputBox
-            value={state.username}
-            placeholder={data.placeholder.username}
-            onChange={HandleInputChange}
-            name="username"
-        />
-        <InputBox
-            value={state.password}
-            placeholder={data.placeholder.password}
-            onChange={HandleInputChange}
-            name="password"
-            type="password"
-        />
-        <InputBox
-           value={state.retypedPassword}
-           placeholder={data.placeholder.reEnterPassword}
-           onChange={HandleInputChange}
-           name="retypedPassword"
-           type="password"
-        />
-      <Div col="row" margin="0 auto">
-          <Link to={`/login`} role="Btn">
-            <Btn> Back </Btn>
-          </Link>
-          
-            <Btn margin="0 1.2rem"  onClick={handleSignup}> Sign Up </Btn>{" "}
-          <Link to={`/scores`} role="Btn">
-            <Btn> Scores </Btn>{" "}
-          </Link>
+      <Div class="row">
+        <FlagContainer>
+          {" "}
+          <Div margin="0 auto" class="row">
+            {Object.values(data.flags).map(flag => (
+              <FlagImg margin=".7rem" flag={flag} />
+            ))}{" "}
+          </Div>
+        </FlagContainer>
+        <Div margin="1rem auto" alignItems="center">
+          <Title name={data.title} />{" "}
+          <Jumbotron margin="1rem auto" width="max-content">
+            <InputBox
+              value={state.username}
+              placeholder={data.placeholder.username}
+              onChange={HandleInputChange}
+              name="username"
+            />
+            <InputBox
+              value={state.password}
+              placeholder={data.placeholder.password}
+              onChange={HandleInputChange}
+              name="password"
+              type="password"
+            />
+            <InputBox
+              value={state.retypedPassword}
+              placeholder={data.placeholder.reEnterPassword}
+              onChange={HandleInputChange}
+              name="retypedPassword"
+              type="password"
+            />
+            <Div margin="0 auto">
+              <Link to={`/login`} role="Btn">
+                <Btn> Back </Btn>
+              </Link>
+              <Btn margin="0 1.2rem" onClick={handleSignup}>
+                {" "}
+                Sign Up{" "}
+              </Btn>{" "}
+              <Link to={`/scores`} role="Btn">
+                <Btn> Scores </Btn>{" "}
+              </Link>
+            </Div>
+          </Jumbotron>
         </Div>
-      </Jumbotron>
-    </Div>
 
-    <FlagContainer margin="0 auto">
-      {" "}
-      <Div display="flex" margin="0 auto">
-      {Object.keys(data.flags2).map(flag => (
-        <FlagImg margin=".8rem" flag={flag} />
-      ))}{" "}
+        <FlagContainer>
+          {" "}
+          <Div margin="0 auto" class="row">
+            {Object.keys(data.flags2).map(flag => (
+              <FlagImg margin=".7rem" flag={flag} />
+            ))}{" "}
+          </Div>
+        </FlagContainer>
+        <Footer />
       </Div>
-    </FlagContainer>
-    <Footer/>
-  </Container>
+    </Container>
   );
 }
 

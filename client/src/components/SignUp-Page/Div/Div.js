@@ -3,16 +3,16 @@ import React from "react";
 function Div(props) {
   const style ={
     base:{
-      width: "max-content",
+      width: props.width,
       margin: props.margin,
       display: props.display,
       alignItems: props.alignItems,
-      display:props.display,
-      position:props.position,
+      "flex-wrap":"no-wrap",
+      height:"max-content"
     }
   }
   return (
-    <div class= {props.col} style ={style.base}>
+    <div class={props.class} style ={style.base}>
         {props.children}
     </div>
   );

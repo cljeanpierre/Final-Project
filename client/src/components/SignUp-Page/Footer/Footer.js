@@ -4,7 +4,7 @@ import React from "react";
 const Footer = (props) =>{
     const style ={
         base:{
-            margin: "0rem auto 1rem",
+            margin: "0rem auto",
             width: "max-content",
             color: "black",
             fontSize: ".8rem",

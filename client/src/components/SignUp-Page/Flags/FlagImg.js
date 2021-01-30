@@ -11,10 +11,10 @@ const FlagImg = (props)=> {
       height: "max-content",
     },
     imgBase:{
-      width: "100%",
-      height: "100%",
+      width: "auto",
+      height: "auto",
       border:".1rem solid transparent",
-      boxShadow: ".6rem .6rem .6rem darkgrey",
+      boxShadow: ".3rem .3rem .3rem white",
       borderRadius: "15px",
     }
   }
